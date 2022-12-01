@@ -23,6 +23,6 @@ class PageLayout extends Component
      */
     public function render()
     {
-        return view('components.page-layout');
+        return view('layouts.page-layout');
     }
 }

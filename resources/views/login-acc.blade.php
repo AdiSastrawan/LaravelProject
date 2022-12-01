@@ -24,7 +24,7 @@
                             Log in to your account
                         </h2>
                         <div id="error"></div>
-                        <form action="{{ url('bookingDetails') }}" method="get" onSubmit="return ValidasiForm()" name="FormReg"
+                        <form action="{{ url('booking-details') }}" method="get" onSubmit="return ValidasiForm()" name="FormReg"
                             class="space-y-8">
                             <!--EMAIL-->
                             <div class="space-y-2">

@@ -1,3 +1,4 @@
+//LOGIN ACC PAGE
 function ValidasiForm() {
     //form validasi untuk menampilkan pesan jika terdapat inputan yang kosong
     if (document.FormReg.email.value == "") {
@@ -22,15 +23,5 @@ function ValidasiForm() {
     }
 }
 
-let carts = document.querySelectorAll('add-cart');
-
-for (let i=0; i<carts.length; i++){
-    carts[i].addEventListener('click', ()=>{
-        cartTotal();
-    })
-}
-
-function cartTotal(){
-    let productNumbers = localStorage.getItem('cartTotal');
-    localStorage.setItem('cartTotal', 1);
-}
+//BOOKING DETAILS PAGE
+console.log("Here");

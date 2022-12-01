@@ -2,23 +2,42 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Package;
+use App\Models\Room;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
     public function loginPage(){
-        return view('pages.login');
+        return view('page.login');
     }
 
     public function landingPage(){
-        return view('pages.index');
+        return view('page.landing',['title'=>"home"]);
     }
 
     public function bookingPage(){
-        return view('pages.booking');
+        //statis
+        /*
+        $packages=[
+            (object)[
+            'package_code'=>'Example Code',
+            'package_name'=>'Example Name',
+            'package_desc'=>'Example Desc',
+            ],
+            (object)[
+            'package_code'=>'Example Code 2',
+            'package_name'=>'Example Name 2',
+            'package_desc'=>'Example Desc 2',
+            ]
+        ];
+        */
+        $packages=Package::all();
+        $rooms=Room::all();
+        return view('page.booking', compact('packages','rooms'));
     }
 
     public function bookingDetailsPage(){
-        return view('pages.bookingDetails');
+        return view('page.booking-details',['title'=>"booking-details"]);
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,18 +18,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('index', function () {
-    return view('index');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+require __DIR__.'/auth.php';
+
+Route::get('login-acc', function () {
+    return view('login-acc');
 });
 
-Route::get('booking', function () {
-    return view('booking');
-});
-
-Route::get('bookingDetails', function () {
-    return view('bookingDetails');
-});
-
-Route::get('login', function () {
-    return view('login');
-});
+Route::get('/home' , [PageController::class, 'landingPage'])->name('home');
+Route::get('/booking' , [PageController::class, 'bookingPage'])->name('booking');
+Route::get('/booking-details' , [PageController::class, 'bookingDetailsPage'])->name('booking-details');
