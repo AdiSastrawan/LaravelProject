@@ -35,36 +35,35 @@
             </div>
             <div class="lg:w-3/4 xl:w-2/4 lg:mx-auto space-y-5">
                 <!--PACKAGE TEMPLATE-->
-                @foreach ($packages as $key=>$item)
+                @foreach ($rooms as $key=>$item)
                 <div
                     class="group border-gray-300 relative -mx-4 sm:-mx-8 p-6 sm:p-8 rounded-2xl bg-slate-50 border border-transparent hover:border-gray-100 hover:bg-sky-50 shadow-2xl shadow-transparent hover:shadow-gray-600/10 sm:gap-8 sm:flex transition duration-300 hover:z-10">
                     <!--IMAGE-->
                     <div
                         class="sm:w-2/6 rounded-3xl overflow-hidden transition-all duration-500 group-hover:rounded-xl">
-                        <img src="img/1466.jpg"
+                        <img src="{{$item->packages->feature_img}}"
                             class="sm:h-full object-cover object-top transition duration-500 group-hover:scale-105" />
-                        <a href="{{ url('login') }}"></a>
                     </div>
                     <!--CONTENT-->
                     <div class="sm:p-2 sm:pl-0 sm:w-4/6">
-                        <span class="mt-4 mb-2 inline-block font-medium text-red-600 sm:mt-0">3 rooms left</span>
+                        <span class="mt-4 mb-2 inline-block font-medium text-red-600 sm:mt-0">4 rooms left</span>
                         <span class="pl-28 mt-4 mb-2 inline-block font-medium text-gray-700 sm:mt-0">| Rooms no </span>
-                        {{$item->room_id}}
+                        {{$item->room_number}}
                         <h3 class="text-2xl font-semibold text-primary">
-                            {{$item->package_name}}
+                            {{$item->packages->package_name}}
                         </h3>
                         <p class="my-6 text-gray-600">
-                            {{$item->package_desc}}
+                            {{$item->packages->package_desc}}
                         </p>
                         <div class="flex flex-row space-x-3">
                             <div
                                 class="bg-white px-3 py-1 rounded-xl border border-gray-300 text-sm font-medium text-gray-600 transition duration-300">
-                                Rp 500.000<span class="text-gray-400">/month</span>
+                                Rp {{$item->prices->monthly_price}}<span class="text-gray-400">/month</span>
                             </div>
 
                             <div
                                 class="bg-white px-3 py-1 rounded-xl border border-gray-300 text-sm font-medium text-gray-600 transition duration-300">
-                                max 1 person
+                                max {{$item->max_resident}} person
                             </div>
 
                             <a href="{{ url('booking-details') }}"

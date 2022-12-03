@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Package;
 use App\Models\Room;
+use App\Models\Price;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -34,7 +35,8 @@ class PageController extends Controller
         */
         $packages=Package::all();
         $rooms=Room::all();
-        return view('page.booking', compact('packages','rooms'));
+        $prices=Price::all();
+        return view('page.booking', compact('packages','rooms', 'prices'));
     }
 
     public function bookingDetailsPage(){
