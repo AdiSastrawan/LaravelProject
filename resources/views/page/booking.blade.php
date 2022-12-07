@@ -9,7 +9,7 @@
                     <h4 class="ml-10 text-gray-500 font-semibold text-xl">
                         Packages
                         <span class="text-gray-400 font-semibold text-xl">
-                            > Details > Payment > Finish
+                            > Details > Cart > Data > Payment > Finish
                         </span>
                     </h4>
                 </div>
