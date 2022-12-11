@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 11, 2022 at 07:06 AM
+-- Generation Time: Dec 11, 2022 at 07:32 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -76,7 +76,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (1, '2014_10_12_000000_create_users_table', 1),
 (2, '2014_10_12_100000_create_password_resets_table', 1),
 (3, '2019_08_19_000000_create_failed_jobs_table', 1),
-(4, '2019_12_14_000001_create_personal_access_tokens_table', 1);
+(4, '2019_12_14_000001_create_personal_access_tokens_table', 1),
+(5, '2022_12_03_190812_create_reviews_table', 2);
 
 -- --------------------------------------------------------
 
@@ -161,6 +162,29 @@ INSERT INTO `prices` (`price_id`, `price_name`, `monthly_price`, `price_date_fro
 (1, 'PKG001 Price', '500000', NULL, NULL, NULL, '2022-12-03 02:03:06', '2022-12-03 02:03:06'),
 (2, 'PKG002 Price', '750000', NULL, NULL, NULL, '2022-12-03 02:06:35', '2022-12-03 02:06:35'),
 (3, 'PKG003 Price', '950000', NULL, NULL, NULL, '2022-12-03 02:06:35', '2022-12-03 02:06:35');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reviews`
+--
+
+CREATE TABLE `reviews` (
+  `id` bigint UNSIGNED NOT NULL,
+  `user_id` bigint UNSIGNED NOT NULL,
+  `rating` int NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `reviews`
+--
+
+INSERT INTO `reviews` (`id`, `user_id`, `rating`, `description`, `created_at`, `updated_at`) VALUES
+(1, 2, 4, 'suehwuauhds', '2022-12-10 23:25:57', '2022-12-10 23:25:57'),
+(2, 2, 1, 'uwauwuauaw', '2022-12-10 23:26:11', '2022-12-10 23:26:11');
 
 -- --------------------------------------------------------
 
@@ -267,6 +291,12 @@ ALTER TABLE `prices`
   ADD PRIMARY KEY (`price_id`);
 
 --
+-- Indexes for table `reviews`
+--
+ALTER TABLE `reviews`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `rooms`
 --
 ALTER TABLE `rooms`
@@ -301,7 +331,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `packages`
@@ -320,6 +350,12 @@ ALTER TABLE `personal_access_tokens`
 --
 ALTER TABLE `prices`
   MODIFY `price_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `reviews`
+--
+ALTER TABLE `reviews`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `rooms`
