@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,3 +31,6 @@ Route::get('login-acc', function () {
 Route::get('/home' , [PageController::class, 'landingPage'])->name('home');
 Route::get('/booking' , [PageController::class, 'bookingPage'])->name('booking');
 Route::get('/booking-details' , [PageController::class, 'bookingDetailsPage'])->name('booking-details');
+Route::get('/' , [AdminController::class, 'index'])->name('admin-page')->middleware('auth','isadmin');
+Route::resource('/booking-details', ReviewController::class);
+Route::resource('/edit-reviews', ReviewController::class);
