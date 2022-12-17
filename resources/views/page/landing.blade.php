@@ -13,12 +13,10 @@
                 A clean and simple boarding house that have many interesting facilities that you should try!
             </p>
             <div class="flex justify-center flex-wrap gap-6">
-                <button type="button"
-                class="w-full py-3 px-6 rounded-sm text-center transition  bg-gray-500 hover:bg-gray-900 md:w-max">
-                <span class="block text-white font-semibold">
-                    Learn More
-                </span>
-                </button>
+                <a href="{{ url('booking') }}"
+                    class="group font-semibold block px-6 py-3 rounded-xl bg-gradient-to-r from-sky-400 to-sky-500 text-center text-white transition duration-200 hover:shadow-2xl">
+                        Book Now
+                </a>
             </div>
             </div>
             <!--IMAGE-->
@@ -184,7 +182,7 @@
                 <!--icon clock-->
                 <div class="flex gap-2 items-center text-gray-500">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="w-5 h-5 text-gray-400 dark:text-gray-600">
+                    stroke="currentColor" class="w-5 h-5 text-gray-400">
                     <path stroke-linecap="round" stroke-linejoin="round"
                         d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
@@ -210,7 +208,7 @@
                 <!--icon clock-->
                 <div class="flex gap-2 items-center text-gray-500">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="w-5 h-5 text-gray-400 dark:text-gray-600">
+                    stroke="currentColor" class="w-5 h-5 text-gray-400">
                     <path stroke-linecap="round" stroke-linejoin="round"
                         d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>

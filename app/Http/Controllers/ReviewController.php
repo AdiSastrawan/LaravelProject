@@ -45,7 +45,7 @@ class ReviewController extends Controller
 
         $validation['user_id']=Auth::id();
         Review::create($validation);
-        return redirect('booking-details');;
+        return redirect('booking-details');
     }
 
     /**
