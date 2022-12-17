@@ -18,4 +18,7 @@ class Package extends Model
     {
         return $this->hasMany(Room::class, 'package_id', 'package_id');
     }
+    public function prices(){
+        return $this->hasOne(Price::class, 'price_id','price_id');
+    }
 }

@@ -17,6 +17,9 @@ class AuthenticatedSessionController extends Controller
      */
     public function create()
     {
+        // if (!session()->has('url.intended')) {
+        //     redirect()->setIntendedUrl(session()->previousUrl());
+        // }    
         return view('auth.login');
     }
 
