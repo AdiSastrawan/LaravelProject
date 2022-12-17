@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Package;
 use App\Models\Room;
 use App\Models\Price;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -14,7 +15,16 @@ class PageController extends Controller
     }
 
     public function landingPage(){
-        return view('page.landing',['title'=>"home"]);
+        if(Auth::check()){
+            if(Auth::user()->role == '1'){
+                return redirect('/admin');
+            }else{
+
+                return view('page.landing',['title'=>"home"]);
+            }
+        }else{
+            return view('page.landing',['title'=>"home"]);
+        }
     }
 
     public function bookingPage(){

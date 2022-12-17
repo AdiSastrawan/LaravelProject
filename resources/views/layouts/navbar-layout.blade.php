@@ -25,25 +25,25 @@
                         <ul
                             class="px-6 pt-32 text-gray-700 space-y-8 md:px-12 lg:space-y-0 lg:flex lg:space-x-12 lg:pt-0">
                             <li>
-                                <a href="{{ url('home') }}"
+                                <a href="{{ route('home') }}"
                                     class="relative before:absolute before:inset-x-0 before:bottom-0 before:h-2 before:origin-right before:scale-x-0 before:bg-blue-200 before:transition before:duration-200 hover:before:origin-left hover:before:scale-x-100">
                                     <span class="relative text-sky-800">Home</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ url('home#services') }}"
+                                <a href="/#services"
                                     class="group relative before:absolute before:inset-x-0 before:bottom-0 before:h-2 before:origin-right before:scale-x-0 before:bg-blue-200 before:transition before:duration-200 hover:before:origin-left hover:before:scale-x-100">
                                     <span class="relative group-hover:text-sky-800">Services</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ url('home#blogs') }}"
+                                <a href="/#blogs"
                                     class="group relative before:absolute before:inset-x-0 before:bottom-0 before:h-2 before:origin-right before:scale-x-0 before:bg-blue-200 before:transition before:duration-200 hover:before:origin-left hover:before:scale-x-100">
                                     <span class="relative group-hover:text-sky-800">Blogs</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ url('home#about_us') }}"
+                                <a href="/#about_us"
                                     class="group relative before:absolute before:inset-x-0 before:bottom-0 before:h-2 before:origin-right before:scale-x-0 before:bg-blue-200 before:transition before:duration-200 hover:before:origin-left hover:before:scale-x-100">
                                     <span class="relative group-hover:text-sky-800">Contact us</span>
                                 </a>
