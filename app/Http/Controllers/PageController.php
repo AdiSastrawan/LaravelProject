@@ -46,6 +46,7 @@ class PageController extends Controller
         $packages=Package::all();
         $rooms=Room::all();
         $prices=Price::all();
+        //dd($packages);
         return view('page.booking', compact('packages','rooms', 'prices'));
     }
 

@@ -1,32 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Page</title>
-    <meta name="author" content="David Grzyb">
-    <meta name="description" content="">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-    <!-- Tailwind -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('Laravel', 'Admin Page | kos.kita') }}</title>
+
+    <!--FONTS-->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!--ICON-->
+    <link rel="shortcut icon" href="img/logo.png">
+
+    <!--Tailwind-->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script src="js/script.js" async></script>
+
     <style>
-        @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
-        .font-family-karla { font-family: karla; }
-        .bg-sidebar { background: #3d68ff; }
-        .cta-btn { color: #3d68ff; }
-        .upgrade-btn { background: #1947ee; }
-        .upgrade-btn:hover { background: #0038fd; }
-        .active-nav-link { background: #1947ee; }
-        .nav-item:hover { background: #1947ee; }
-        .account-link:hover { background: #3d68ff; }
+        .bg-sidebar {
+            background: #3d68ff;
+        }
+
+        .cta-btn {
+            color: #3d68ff;
+        }
+
+        .upgrade-btn {
+            background: #1947ee;
+        }
+
+        .upgrade-btn:hover {
+            background: #0038fd;
+        }
+
+        .active-nav-link {
+            background: #1947ee;
+        }
+
+        .nav-item:hover {
+            background: #1947ee;
+        }
+
+        .account-link:hover {
+            background: #3d68ff;
+        }
     </style>
 </head>
-<body class="bg-gray-100 font-family-karla flex">
+
+<body class="bg-gray-100 font-poppins flex">
     @include('layouts.admin_nav')
-    <div class="w-full overflow-x-hidden border-t flex flex-col">
-        {{$slot}}
-    </div>
+        <div class="w-full overflow-x-hidden border-t flex flex-col">
+            {{$slot}}
+        </div>
     @include('layouts.admin_footer')
 </body>
+
 </html>

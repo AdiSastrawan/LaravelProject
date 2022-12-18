@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BookingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,8 +33,10 @@ Route::get('login-acc', function () {
 
 Route::get('/' , [PageController::class, 'landingPage']);
 Route::get('/home' , [PageController::class, 'landingPage'])->name('home');
-Route::get('/booking' , [PageController::class, 'bookingPage'])->name('booking');
+//Route::get('/booking' , [PageController::class, 'bookingPage'])->name('booking');
 Route::get('/booking-details' , [PageController::class, 'bookingDetailsPage'])->name('booking-details');
+
+Route::get('/booking' , [BookingController::class, 'viewPackage'])->name('booking');
 
 Route::get('/admin' , [AdminController::class, 'index'])->name('admin-page')->middleware('auth','isadmin');
 Route::get('/package' , [AdminController::class, 'package'])->name('admin-package')->middleware('auth','isadmin');
