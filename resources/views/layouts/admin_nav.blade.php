@@ -7,13 +7,17 @@
             </button>
         </div>
         <nav class="text-white text-base font-semibold pt-3">
-            <a href="{{route('admin-page')}}"  class="flex items-center active-nav-link text-white py-4 pl-6 nav-item">
+            <a href="{{route('admin-index')}}"  class="flex items-center active-nav-link text-white py-4 pl-6 nav-item">
                 <i class="fas fa-tachometer-alt mr-3"></i>
                 Dashboard
             </a>
-            <a href="{{route('admin-package')}}" class="flex items-center  text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+            <a href="{{route('package.index')}}" class="flex items-center  text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
                 <i class="fas fa-sticky-note mr-3"></i>
                 Package
+            </a>
+            <a href="{{route('room.index')}}" class="flex items-center  text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+                <i class="fas fa-sticky-note mr-3"></i>
+                Room
             </a>
             
         </nav>
@@ -22,18 +26,79 @@
 
     <div class="w-full flex flex-col h-screen overflow-y-hidden">
         <!-- Desktop Header -->
-        <header class="w-full items-center bg-white py-2 px-6 hidden sm:flex">
-            <div class="w-1/2"></div>
-            <div x-data="{ isOpen: false }" class="relative w-1/2 flex justify-end">
-                <button @click="isOpen = !isOpen" class="realtive z-10 w-12 h-12 rounded-full overflow-hidden border-4 border-gray-400 hover:border-gray-300 focus:border-gray-300 focus:outline-none">
-                    <img src="https://source.unsplash.com/uJ8LNVCBjFQ/400x400">
-                </button>
-                <button x-show="isOpen" @click="isOpen = false" class="h-full w-full fixed inset-0 cursor-default"></button>
-                <div x-show="isOpen" class="absolute w-32 bg-white rounded-lg shadow-lg py-2 mt-16">
-                    <a href="#" class="block px-4 py-2 account-link hover:text-white">Account</a>
-                    <a href="#" class="block px-4 py-2 account-link hover:text-white">Support</a>
-                    <a href="{{route('logout')}}" class="block px-4 py-2 account-link hover:text-white" onclick="event.preventDefault();
-                    this.closest('form').submit();">Sign Out</a>
+        <header class="w-full items-end bg-white py-2 px-6 hidden sm:flex">
+            <div class="w-4/5 "></div>
+            
+            <div class="hidden sm:flex sm:items-center sm:ml-6 lg:border-l">
+                <div class="p-3">
+                <x-dropdown align="right" width="48">
+                    <x-slot name="trigger">
+                        <button
+                            class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
+                            @auth
+                                    <div>{{ Auth::user()->name }}</div>
+                                @else
+                                    {{ __('Login') }}
+                                @endauth
+
+                            <div class="ml-1">
+                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                        </button>
+                    </x-slot>
+
+                    <x-slot name="content">
+                        <!-- Authentication -->
+                        @auth
+                            <x-dropdown-link :href="route('profile.edit')" class="flex">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="mr-3 icon icon-tabler icon-tabler-user-circle" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <circle cx="12" cy="12" r="9"></circle>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                    <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855"></path>
+                                </svg>
+                                {{ __(' My Profile') }}
+                            </x-dropdown-link>
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <x-dropdown-link :href="route('logout')" class="flex"
+                                    onclick="event.preventDefault();
+                                                    this.closest('form').submit();">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="mr-3 icon icon-tabler icon-tabler-logout" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2"></path>
+                                        <path d="M7 12h14l-3 -3m0 6l3 -3"></path>
+                                     </svg>  
+                                    {{ __('Log Out') }}
+                                </x-dropdown-link>
+                            </form>
+                        @else
+                            <x-dropdown-link :href="route('login')" class="flex">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="mr-3 icon icon-tabler icon-tabler-login" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2"></path>
+                                    <path d="M20 12h-13l3 -3m0 6l-3 -3"></path>
+                                 </svg>
+                                {{ __('Login') }}
+                            </x-dropdown-link>
+                            <x-dropdown-link :href="route('register')" class="flex">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="mr-3 icon icon-tabler icon-tabler-user-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <circle cx="9" cy="7" r="4"></circle>
+                                    <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
+                                    <path d="M16 11h6m-3 -3v6"></path>
+                                 </svg>
+                                {{ __('Register') }}
+                            </x-dropdown-link>
+                        @endauth
+                    </x-slot>
+                    
+                </x-dropdown>
                 </div>
             </div>
         </header>

@@ -3,7 +3,7 @@
     
     <div class="p-8 rounded border border-gray-200 bg-white">
         <h1 class="font-medium text-3xl">Create Package</h1>
-        <form action="{{route('admin-package-store')}}" method="POST" enctype="multipart/form-data">
+        <form action="{{route('package.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mt-8 grid lg:grid-cols-2 gap-4">
                 <div> <label for="name" class="text-sm text-gray-700 block mb-1 font-medium">Package Code</label>
