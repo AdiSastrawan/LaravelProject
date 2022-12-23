@@ -153,6 +153,7 @@ return [
     | this array to grant expanded functionality to your applications.
     |
     */
+    'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
 
     'providers' => [
 
@@ -181,6 +182,8 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        RealRashid\SweetAlert\SweetAlertServiceProvider::class,
+
 
         /*
          * Package Service Providers...
