@@ -23,5 +23,9 @@ function ValidasiForm() {
     }
 }
 
+function turnActive() {
+    console.log("Turning active");
+}
+
 //BOOKING DETAILS PAGE
 console.log("Here");

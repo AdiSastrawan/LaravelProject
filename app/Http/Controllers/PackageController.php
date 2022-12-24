@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use RealRashid\SweetAlert\Facades\Alert;
+
+
 use Illuminate\Http\Request;
 use App\Models\Package;
 use App\Models\Price;
@@ -13,10 +16,14 @@ class PackageController extends Controller
     public function index(Request $request)
     {
         $search = $request->search;
-        $package = Package::where('package_code', 'LIKE', '%' . $search . '%')
-            ->orWhere('package_name', 'LIKE', '%' . $search . '%')
-            ->orWhere('package_desc', 'LIKE', '%' . $search . '%')
-            ->paginate(5);
+        if ($search != null) {
+            $package = Package::where('package_code', 'LIKE', '%' . $search . '%')
+                ->orWhere('package_name', 'LIKE', '%' . $search . '%')
+                ->orWhere('package_desc', 'LIKE', '%' . $search . '%')
+                ->paginate(5);
+        } else {
+            $package = Package::paginate(5);
+        }
         return view('admin.package.package', compact('package'));
     }
     //start package
@@ -33,6 +40,8 @@ class PackageController extends Controller
     public function create()
     {
         $price = Price::all();
+
+
         return view('admin.package.package-create', compact('price'));
     }
     public function store(Request $request)
@@ -59,7 +68,8 @@ class PackageController extends Controller
                 $request->file('img')->move(public_path() . '/img', $response->feature_img);
             }
             $response->save();
-            return redirect('/package');
+
+            return redirect('/package')->with('toast_success', 'Data Sucessfully added');
         } catch (\Exception $e) {
             echo $e->getMessage();
         }
@@ -86,21 +96,22 @@ class PackageController extends Controller
                 $request->file('img')->move(public_path() . '/img', $response->feature_img);
             }
             $response->save();
-            return redirect('/package');
+
+            return redirect('/package')->with('toast_success', 'Data Sucessfully updated');
         } catch (\Exception $e) {
             echo $e->getMessage();
         }
     }
     public function destroy($id)
     {
+        // example:
+        // example:
+
+
+
         Package::findOrFail($id)->delete();
-        return redirect('/package');
+        return redirect('/package')->with('toast_success', 'Data Successfully deleted');
     }
     //end package
-    // public function room(Request $request){
-    //     $search = $request->search;
-    //     $package = Room::
-    //     paginate(5);
-    //     return view('admin.package');
-    // }
+
 }

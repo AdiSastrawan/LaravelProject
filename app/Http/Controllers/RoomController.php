@@ -29,7 +29,7 @@ class RoomController extends Controller
      */
     public function create()
     {
-        return view('admin.room.room-create', compact('room'));
+        return view('admin.room.room-create');
     }
 
     /**
