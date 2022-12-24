@@ -2,19 +2,39 @@
     <!--BOOKING SECTION START-->
     <div class="px-6 md:px-12 lg:container lg:mx-auto lg:px-6 lg:py-3">
         <section id="booking" class="items-center">
-            <!--NAVIGATION DETAILS-->
 
-            <div class="relative w-full">
+            <!--NAVIGATION DETAILS-->
+            <div class="relative w-full pl-10">
                 <div class="pt-24">
-                    <h4 class="ml-10 text-gray-500 font-semibold text-xl">
-                        Packages
-                        <span class="text-gray-400 font-semibold text-xl">
-                            > Details > Cart > Data > Payment > Finish
-                        </span>
-                    </h4>
+                    <nav class="flex" aria-label="Breadcrumb">
+                        <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                            <li class="inline-flex items-center">
+                                <a href="{{ url('booking') }}" class="inline-flex items-center text-lg font-semibold text-gray-600 hover:text-gray-900">
+                                    Packages
+                                </a>
+                            </li>
+                            <li>
+                                <div class="flex items-center">
+                                <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                                <a href="{{ url('cart') }}" class="ml-1 text-lg font-medium text-gray-500 hover:text-gray-900 md:ml-2">
+                                    Cart
+                                </a>
+                                </div>
+                            </li>
+                            <li aria-current="page">
+                                <div class="flex items-center">
+                                <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                                <span class="ml-1 text-lg font-medium text-gray-500 md:ml-2">
+                                    Fill Data
+                                </span>
+                                </div>
+                            </li>
+                        </ol>
+                    </nav>
                 </div>
                 <br><br>
-            </div>
+            </div>            
+            <!--NAVIGATION DETAILS-->
 
             <div class="items-center lg:pt-30 lg:m-auto">
 
@@ -72,10 +92,10 @@
                             </a>
 
                             <div class="flex flex-row space-x-4 mt-4 lg:mt-0 md:mt-0">
-                                <a href="#">
+                                <a href="{{ route('add-to-cart', $item->package_id) }}">
                                     <button
                                         class="h-5 items-center justify-center  rounded-full text-primary bg-violet-50 hover:text-red-500 transition duration 150 ease-in-out"
-                                        type="button" aria-label="Cart" id="checkout">
+                                        type="button" aria-label="Cart" id="cart">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20"
                                             height="20" fill="currentColor" class="bi bi-cart3"
                                             viewBox="0 0 16 16">

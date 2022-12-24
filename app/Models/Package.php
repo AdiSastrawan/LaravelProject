@@ -11,13 +11,13 @@ class Package extends Model
     public $primaryKey='package_id';
     protected $table="packages";
     protected $fillable=[
-        'package_code', 'package_name', 'permalink', 'package_desc', 'feature_img'
+        'package_code', 'package_name', 'permalink', 'package_desc', 'feature_img', 'price_id', 'monthly_price'
     ];
 
-    public function rooms()
-    {
+    public function rooms(){
         return $this->hasMany(Room::class, 'package_id', 'package_id');
     }
+
     public function prices(){
         return $this->hasOne(Price::class, 'price_id','price_id');
     }

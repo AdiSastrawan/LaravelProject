@@ -18,6 +18,7 @@
     <!--SCRIPTS-->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script src="js/script.js" async></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body class="bg-gray-100 font-poppins">

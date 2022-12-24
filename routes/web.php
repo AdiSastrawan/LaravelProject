@@ -4,6 +4,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PackageController;
+use App\Http\Controllers\RoomController;
 use App\Http\Controllers\BookingController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/' , [PageController::class, 'landingPage']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -31,20 +34,19 @@ Route::get('login-acc', function () {
     return view('login-acc');
 });
 
-Route::get('/' , [PageController::class, 'landingPage']);
 Route::get('/home' , [PageController::class, 'landingPage'])->name('home');
-//Route::get('/booking' , [PageController::class, 'bookingPage'])->name('booking');
 Route::get('/booking-details' , [PageController::class, 'bookingDetailsPage'])->name('booking-details');
 
-Route::get('/booking' , [BookingController::class, 'viewPackage'])->name('booking');
+Route::get('/booking' , [BookingController::class, 'package'])->name('booking');
+Route::get('/cart' , [BookingController::class, 'cart'])->name('cart');
+Route::get('add-to-cart/{package_id}', [BookingController::class, 'add'])->name('add-to-cart');
+Route::delete('remove-from-cart', [BookingController::class, 'remove'])->name('remove-from-cart');
+Route::patch('update-cart', [BookingController::class, 'update'])->name('update-cart');
 
-Route::get('/admin' , [AdminController::class, 'index'])->name('admin-page')->middleware('auth','isadmin');
-Route::get('/package' , [AdminController::class, 'package'])->name('admin-package')->middleware('auth','isadmin');
-Route::get('/package/create' , [AdminController::class, 'packageCreate'])->name('admin-package-create')->middleware('auth','isadmin');
-Route::post('/package' , [AdminController::class, 'packageStore'])->name('admin-package-store')->middleware('auth','isadmin');
-Route::get('/package/edit/{id}' , [AdminController::class, 'packageEdit'])->name('admin-package-edit')->middleware('auth','isadmin');
-Route::get('/package/{id}' , [AdminController::class, 'packageDestroy'])->name('admin-package-destroy')->middleware('auth','isadmin');
-Route::put('/package' , [AdminController::class, 'packageUpdate'])->name('admin-package-update')->middleware('auth','isadmin');
+Route::get('/admin', [AdminController::class, 'index'])->name('admin-index')->middleware('auth', 'isadmin');
+
+Route::resource('package', PackageController::class)->middleware('auth', 'isadmin');
+Route::resource('room', RoomController::class)->middleware('auth', 'isadmin');
 
 Route::resource('/booking-details', ReviewController::class);
 Route::resource('/edit-reviews', ReviewController::class);

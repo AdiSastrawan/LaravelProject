@@ -23,7 +23,7 @@
                     <!--LIST MENU-->
                     <div class="flex flex-col h-full justify-between lg:items-center lg:flex-row">
                         <ul
-                            class="px-6 pt-32 text-gray-700 space-y-8 md:px-12 lg:space-y-0 lg:flex lg:space-x-12 lg:pt-0">
+                            class="pt-32 text-gray-700 space-y-8 md:px-4 lg:space-y-0 lg:flex lg:space-x-10 lg:pt-0">
                             <li>
                                 <a href="{{ route('home') }}"
                                     class="relative before:absolute before:inset-x-0 before:bottom-0 before:h-2 before:origin-right before:scale-x-0 before:bg-blue-200 before:transition before:duration-200 hover:before:origin-left hover:before:scale-x-100">
@@ -48,11 +48,24 @@
                                     <span class="relative group-hover:text-sky-800">Contact us</span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="{{ url('cart') }}" class="inline-flex relative items-center text-sm font-medium text-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shopping-cart hover:text-primary transition duration 150 ease-in-out -left-2" width="24" height="24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <circle cx="6" cy="19" r="2"></circle>
+                                        <circle cx="17" cy="19" r="2"></circle>
+                                        <path d="M17 17h-11v-14h-2"></path>
+                                        <path d="M6 5l14 1l-1 7h-13"></path>
+                                    </svg>
+                                    <span class="sr-only">Notifications</span>
+                                    <div class="inline-flex absolute -right-5 justify-center items-center w-5 h-5 text-xs text-white bg-red-500 rounded-full border border-slate-50 dark:border-gray-900">{{ count((array) session('cart')) }}</div>
+                                </a>
+                            </li>
                         </ul>
 
                         <!-- Settings Dropdown -->
-                        <div class="hidden sm:flex sm:items-center sm:ml-6 lg:border-l">
-                            <div class="p-3">
+                        <div class="hidden sm:flex sm:items-center sm:ml-6 lg:border-l pl-3">
+                            <div class="">
                                 <x-dropdown align="right" width="48">
                                     <x-slot name="trigger">
                                         <button
