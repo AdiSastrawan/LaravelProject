@@ -19,6 +19,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/script.js" async></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
     <style>
         .bg-sidebar {

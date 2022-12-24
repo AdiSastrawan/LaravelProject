@@ -44,8 +44,8 @@
                     @enderror
                 </div>
                 <div> <label for="brithday" class="text-sm text-gray-700 block mb-1 font-medium">Picture</label> <input
-                        type="file" value="{{ isset($package) ? $package->feature_img : old('image') }}" name="img"
-                        id="image"
+                        type="file" value="{{ isset($package) ? $package->feature_img : old('image') }}"
+                        name="img" id="image"
                         class="bg-gray-100 border border-gray-200 rounded py-1 px-3 block focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full"
                         placeholder="" />
                     @error('img')
@@ -56,8 +56,8 @@
             </div>
             <div class="space-x-4 mt-8"> <button type="submit"
                     class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-600 active:bg-blue-700 disabled:opacity-50">Save</button>
-                <!-- Secondary --> <button
-                    class="py-2 px-4 bg-white border border-gray-200 text-gray-600 rounded hover:bg-gray-100 active:bg-gray-200 disabled:opacity-50">Cancel</button>
+                <!-- Secondary --> <a href="{{ route('package.index') }}"
+                    class="py-2 px-4 bg-white border border-gray-200 text-gray-600 rounded hover:bg-gray-100 active:bg-gray-200 disabled:opacity-50">Cancel</a>
             </div>
         </form>
         <!-- component -->
