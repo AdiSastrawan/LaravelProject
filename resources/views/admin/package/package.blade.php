@@ -9,17 +9,17 @@
             <div class="my-2 flex sm:flex-row flex-wrap md:flex-nowrap  w-fit">
                 <a class="hover:bg-green-800 py-2 px-3 mx-2   rounded-l border block  w-20 border-white text-white leading-tight bg-green-500 rounded-md "
                     href="{{ route('package.create') }}">Create</a>
-                <form action="" class="flex" method="get">
+                {{-- <form action="" class="flex" method="get">
 
                     <select name="filter"
-                        class=" h-full rounded-r border-t sm:rounded-r-none sm:border-r-0 border-r border-b block appearance-none w-40 bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500">
+                        class="  h-full rounded-r border-t sm:rounded-r-none sm:border-r-0 border-r border-b block appearance-none w-40 bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500">
                         <option value="">All</option>
                         <option value="available">Available</option>
                         <option value="unvailable">Unavailable</option>
                     </select>
                     <button type="submit"
                         class="flex items-center px-1 w-14 justify-center hover:bg-gray-200 bg-white border border-gray-400">Filter</button>
-                </form>
+                </form> --}}
                 <form action="" class="flex px-2 my-2 md:my-0" method="get">
 
                     <div class="block relative">
