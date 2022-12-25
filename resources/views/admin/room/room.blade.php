@@ -5,21 +5,21 @@
             <div>
                 <h2 class="text-2xl font-semibold leading-tight">Rooms</h2>
             </div>
-            <div class="my-2 flex sm:flex-row flex-col w-fit">
+            <div class="my-2 flex flex-wrap md:flex-nowrap w-fit  ">
                 <a class="hover:bg-green-800 py-2 px-3 mx-2   rounded-l border block  w-20 border-white text-white leading-tight bg-green-500 rounded-md "
                     href="{{ route('room.create') }}">Create</a>
-                <form action="" class="flex" method="get">
+                <form action="{{ route('room.index') }}" class="flex" method="get">
 
-                    <select
+                    <select name="filter"
                         class=" h-full rounded-r border-t sm:rounded-r-none sm:border-r-0 border-r border-b block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500">
                         <option value="">All</option>
-                        <option value="1">Available</option>
-                        <option value="0">Unavailable</option>
+                        <option value="1">Booked Room</option>
+                        <option value="0">Unbooked Room</option>
                     </select>
                     <button type="submit"
                         class="flex items-center px-1 w-14 justify-center hover:bg-gray-200 bg-white border border-gray-400">Filter</button>
                 </form>
-                <form action="" class="flex px-2" method="get">
+                <form action="" class="flex px-2 my-2 md:my-0" method="get">
 
                     <div class="block relative">
                         <input placeholder="Search" name="search"
@@ -47,6 +47,15 @@
                                 </th>
                                 <th
                                     class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                    Package Code
+                                </th>
+                                <th
+                                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                    Package Name
+                                </th>
+
+                                <th
+                                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                     Maximun Residence
                                 </th>
                                 <th
@@ -67,12 +76,39 @@
                                         {{ $r->room_number }}
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        {{ $r->packages['package_code'] }}
+                                    </td>
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        {{ $r->packages['package_name'] }}
+                                    </td>
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                         {{ $r->max_resident }}
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                        {{ $r->room_booked }}
-                                    </td>
+                                        @if ($r->room_booked == true)
+                                            <p class="text-green-500 font-semibold">
+                                                Booked
+                                            </p>
+                                        @else
+                                            <p class="text-red-500 font-semibold">
+                                                Not Booked
+                                            </p>
+                                        @endif
 
+                                    </td>
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        <div class="flex md:flex-nowrap justify-center sm:flex-wrap lg:flex-wrap ">
+
+                                            <a class="hover:bg-blue-800 py-2 px-3 my-2 border-white text-white bg-blue-500 rounded-md "
+                                                href="{{ route('room.edit', ['room' => $r->room_id]) }}">edit</a>
+                                            <form action="{{ route('room.destroy', ['room' => $r->room_id]) }}"
+                                                class="py-2 px-3 my-2" id="delete"method="post">
+                                                @csrf
+                                                @method('delete')
+                                                <a type="" onclick="deleteConfirm()" name="deleteConfirm"
+                                                    class="hover:bg-red-800 py-2 px-3 border-white text-white m-2 bg-red-500 rounded-md cursor-pointer">delete</a>
+                                    </td>
+                                    </form>
 
                                 </tr>
                             @endforeach
@@ -99,5 +135,22 @@
             </div>
         </div>
     </div>
+    <script>
+        function deleteConfirm() {
 
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('delete').submit();
+                }
+            })
+        }
+    </script>
 </x-admin-layout>

@@ -26,19 +26,41 @@
                     @enderror
                 </div>
                 <div> <label for="job" class="text-sm text-gray-700 block mb-1 font-medium">Description</label>
-                    <input type="text" value="{{ isset($package) ? $package->package_desc : old('desc') }}"
-                        name="desc" id="desc"
+                    <textarea name="desc" id="desc" cols="40" rows="5"
                         class="bg-gray-100 border border-gray-200 rounded py-1 px-3 block focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full"
-                        placeholder="" />
+                        placeholder=""> {{ isset($package) ? $package->package_desc : old('desc') }}</textarea>
                     @error('desc')
                         <div class="text-xs text-red-800">Warning</div>
                     @enderror
                 </div>
-                <div> <label for="brithday" class="text-sm text-gray-700 block mb-1 font-medium">Price</label> <input
-                        type="text" value="{{ isset($package) ? $package->prices['monthly_price'] : old('price') }}"
+                <div> <label for="brithday" class="text-sm text-gray-700 block mb-1 font-medium">Price</label> <select
                         name="price" id="price"
                         class="bg-gray-100 border border-gray-200 rounded py-1 px-3 block focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full"
-                        placeholder="" />
+                        placeholder="">
+                        <option value="{{ isset($package) ? $package->prices['monthly_price'] : old('price') }}">
+                            {{ isset($package) ? $package->prices['monthly_price'] : old('price') }}</option>
+                        @foreach ($price as $p)
+                            @if ($p->price_id != $package->price_id)
+                                <option value="{{ $p->price_id }}">{{ $p->monthly_price }}</option>
+                            @endif
+                        @endforeach
+                    </select>
+                    @error('price')
+                        <div class="text-xs text-red-800">Warning</div>
+                    @enderror
+                </div>
+                <div> <label for="brithday" class="text-sm text-gray-700 block mb-1 font-medium">Facility</label>
+                    <select name="facility" id="facility"
+                        class="bg-gray-100 border border-gray-200 rounded py-1 px-3 block focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full"
+                        placeholder="">
+                        <option value="{{ isset($package) ? $package->facility_id : old('facility') }}">
+                            Facility-{{ isset($package) ? $package->facility_id : old('facility') }}</option>
+                        @foreach ($facility as $f)
+                            @if ($f->facility_id != $package->facility_id)
+                                <option value="{{ $f->facility_id }}">Facility-{{ $f->facility_id }}</option>
+                            @endif
+                        @endforeach
+                    </select>
                     @error('price')
                         <div class="text-xs text-red-800">Warning</div>
                     @enderror
