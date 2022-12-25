@@ -36,6 +36,7 @@ Route::get('login-acc', function () {
 
 Route::get('/home' , [PageController::class, 'landingPage'])->name('home');
 Route::get('/booking-details' , [PageController::class, 'bookingDetailsPage'])->name('booking-details');
+Route::get('/user-booking' , [PageController::class, 'userBookingPage'])->name('user-booking');
 
 Route::get('/booking' , [BookingController::class, 'package'])->name('booking');
 Route::get('/cart' , [BookingController::class, 'cart'])->name('cart');

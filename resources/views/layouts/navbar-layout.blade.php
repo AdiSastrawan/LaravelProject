@@ -37,9 +37,9 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="/#blogs"
+                                <a href="/#packages"
                                     class="group relative before:absolute before:inset-x-0 before:bottom-0 before:h-2 before:origin-right before:scale-x-0 before:bg-blue-200 before:transition before:duration-200 hover:before:origin-left hover:before:scale-x-100">
-                                    <span class="relative group-hover:text-sky-800">Blogs</span>
+                                    <span class="relative group-hover:text-sky-800">Packages</span>
                                 </a>
                             </li>
                             <li>
@@ -98,6 +98,10 @@
                                                 <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855"></path>
                                             </svg>
                                             {{ __(' My Profile') }}
+                                        </x-dropdown-link>
+                                        <x-dropdown-link href="{{ url('user-booking') }}" class="flex">
+                                            <svg class=" mr-3 w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"></path></svg>
+                                            {{ __(' My Booking') }}
                                         </x-dropdown-link>
                                         <form method="POST" action="{{ route('logout') }}">
                                             @csrf

@@ -15,15 +15,18 @@ class PageController extends Controller
     }
 
     public function landingPage(){
+        $packages   = Package::all();
+        $prices     = Price::all();
+
         if(Auth::check()){
             if(Auth::user()->role == '1'){
                 return redirect('/admin');
             }else{
 
-                return view('page.landing',['title'=>"home"]);
+                return view('page.landing',['title'=>"home"], compact('packages', 'prices'));
             }
         }else{
-            return view('page.landing',['title'=>"home"]);
+            return view('page.landing',['title'=>"home"], compact('packages', 'prices'));
         }
     }
 
@@ -52,5 +55,9 @@ class PageController extends Controller
 
     public function bookingDetailsPage(){
         return view('page.booking-details',['title'=>"booking-details"]);
+    }
+
+    public function userBookingPage(){
+        return view('page.user-booking',['title'=>"user-booking"]);
     }
 }

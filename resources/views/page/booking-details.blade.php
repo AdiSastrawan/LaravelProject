@@ -4,18 +4,36 @@
         <section id="booking" class="items-center">
 
             <!--NAVIGATION DETAILS-->
-            <div class="relative w-full pt-24">
-                <h4 class="ml-10 text-gray-400 font-semibold text-xl">
-                    <a href="{{ url('booking') }}"> Packages > </a>
-                    <span class="text-gray-500 font-semibold text-xl">
-                        Details
-                    </span>
-                    <span class="text-gray-400 font-semibold text-xl">
-                        > Cart > Data > Payment > Finish
-                    </span>
-                </h4>
-
-                <div class="max-w-xl mx-auto text-center my-12">
+            <div class="relative w-full pl-10">
+                <div class="pt-24">
+                    <nav class="flex" aria-label="Breadcrumb">
+                        <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                            <li class="inline-flex items-center">
+                                <a href="{{ url('booking') }}" class="inline-flex items-center text-lg font-medium text-gray-500 hover:text-gray-900">
+                                    Packages
+                                </a>
+                            </li>
+                            <li>
+                                <div class="flex items-center">
+                                <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                                <a href="" class="ml-1 text-lg font-semibold text-gray-600 hover:text-gray-900 md:ml-2">
+                                    Details
+                                </a>
+                                </div>
+                            </li>
+                            <li aria-current="page">
+                                <div class="flex items-center">
+                                <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                                <span class="ml-1 text-lg font-medium text-gray-500 md:ml-2">
+                                    Cart
+                                </span>
+                                </div>
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+                <br><br>
+                <div class="max-w-xl mx-auto text-center my-5">
                     <h4 class="font-semibold text-lg text-primary mb-2">
                         DETAILS OF PACKAGES
                     </h4>
@@ -29,6 +47,7 @@
                     </p>
                 </div>
             </div>
+            
 
             <!--PACKAGE ROOM DETAILS-->
             <div class="md:px-12 lg:px-24">
@@ -68,10 +87,10 @@
                         <h3 class="font-semibold text-lg text-primary mb-2">
                             Spesifikasi Tipe Kamar
                         </h3>
-                        <p class="font-medium text-md text-slate-800 md:text-lg">
+                        <p class="pb-2 pl-2 font-medium text-md text-slate-800 md:text-lg">
                             Lorem ipsum dolor sit amet
                         </p>
-                        <p class="font-medium text-md text-slate-800 md:text-lg">
+                        <p class="pb-2 pl-2 font-medium text-md text-slate-800 md:text-lg">
                             Lorem ipsum dolor sit amet
                         </p>
                     </div>
@@ -80,10 +99,10 @@
                         <h3 class="font-semibold text-lg text-primary mb-2">
                             Fasilitas Kamar
                         </h3>
-                        <p class="font-medium text-md text-slate-800 md:text-lg">
+                        <p class="pb-2 pl-2 font-medium text-md text-slate-800 md:text-lg">
                             Lorem ipsum dolor sit amet
                         </p>
-                        <p class="font-medium text-md text-slate-800 md:text-lg">
+                        <p class="pb-2 pl-2 font-medium text-md text-slate-800 md:text-lg">
                             Lorem ipsum dolor sit amet
                         </p>
                     </div>
@@ -92,10 +111,10 @@
                         <h3 class="font-semibold text-lg text-primary mb-2">
                             Fasilitas Kamar Mandi
                         </h3>
-                        <p class="font-medium text-md text-slate-800 md:text-lg">
+                        <p class="pb-2 pl-2 font-medium text-md text-slate-800 md:text-lg">
                             Lorem ipsum dolor sit amet
                         </p>
-                        <p class="font-medium text-md text-slate-800 md:text-lg">
+                        <p class="pb-2 pl-2 font-medium text-md text-slate-800 md:text-lg">
                             Lorem ipsum dolor sit amet
                         </p>
                     </div>
@@ -104,11 +123,14 @@
                         <h3 class="font-semibold text-lg text-primary mb-2">
                             Fasilitas Umum
                         </h3>
-                        <p class="font-medium text-md text-slate-800 md:text-lg">
-                            Lorem ipsum dolor sit amet
+                        <p class="pb-2 pl-2 font-medium text-md text-slate-800 md:text-lg">
+                            WiFi
                         </p>
-                        <p class="font-medium text-md text-slate-800 md:text-lg">
-                            Lorem ipsum dolor sit amet
+                        <p class="pb-2 pl-2 font-medium text-md text-slate-800 md:text-lg">
+                            Garage
+                        </p>
+                        <p class="pb-2 pl-2 font-medium text-md text-slate-800 md:text-lg">
+                            Boarding House Keeper
                         </p>
                     </div>
 
@@ -116,11 +138,20 @@
                         <h3 class="font-semibold text-lg text-primary mb-2">
                             Peraturan
                         </h3>
-                        <p class="font-medium text-md text-slate-800 md:text-lg">
-                            Lorem ipsum dolor sit amet
+                        <p class="pb-2 pl-2 font-medium text-md text-slate-800 md:text-lg">
+                            24 Hours Access
                         </p>
-                        <p class="font-medium text-md text-slate-800 md:text-lg">
-                            Lorem ipsum dolor sit amet
+                        <p class="pb-2 pl-2 font-medium text-md text-slate-800 md:text-lg">
+                            Fines for damage to goods
+                        </p>
+                        <p class="pb-2 pl-2 font-medium text-md text-slate-800 md:text-lg">
+                            It is forbidden to bring animals
+                        </p>
+                        <p class="pb-2 pl-2 font-medium text-md text-slate-800 md:text-lg">
+                            Rooms are for tenants only
+                        </p>
+                        <p class="pb-2 pl-2 font-medium text-md text-slate-800 md:text-lg">
+                            Max. 1 person/room
                         </p>
                     </div>
 
@@ -128,11 +159,14 @@
                         <h3 class="font-semibold text-lg text-primary mb-2">
                             Lokasi dan lingkungan sekitar
                         </h3>
-                        <p class="font-medium text-md text-slate-800 md:text-lg">
-                            pengen isi map
+                        <p class="pb-2 pl-2 font-medium text-md text-slate-800 md:text-lg">
+                            Circle K - 826 m
                         </p>
-                        <p class="font-medium text-md text-slate-800 md:text-lg">
-                            Lorem ipsum dolor sit amet
+                        <p class="pb-2 pl-2 font-medium text-md text-slate-800 md:text-lg">
+                            Universitas Pendidikan Ganesha - 1.2 km
+                        </p>
+                        <p class="pb-2 pl-2 font-medium text-md text-slate-800 md:text-lg">
+                            RS Umum Jaya - 1.6 km
                         </p>
                     </div>
 
@@ -140,18 +174,18 @@
                         <h3 class="font-semibold text-lg text-primary mb-2">
                             Ketentuan Pengajuan Sewa
                         </h3>
-                        <p class="font-medium text-md text-slate-800 md:text-lg">
-                            Lorem ipsum dolor sit amet
+                        <p class="pb-2 pl-2 font-medium text-md text-slate-800 md:text-lg">
+                            Calon penyewa wajib sertakan KTP
                         </p>
-                        <p class="font-medium text-md text-slate-800 md:text-lg">
-                            Lorem ipsum dolor sit amet
+                        <p class="pb-2 pl-2 font-medium text-md text-slate-800 md:text-lg">
+                            Pembayaran uang sewa dilakukan setiap bulannya
                         </p>
                     </div>
                 </div>
 
                 <!--FILL IN DATA-->
                 <div class="lg:w-1/2 space-y-5">
-                    <form action="#" method="post" onSubmit="return ValidasiForm()" name="FormReg">
+                    <form action="#" method="POST">
                         <div class="bg-slate-50 p-6 mb-9 rounded-xl">
                             <h3 class="font-semibold text-2xl text-gray-700 mb-2">
                                 Rp 500.000<span class="text-gray-400">/month</span>
@@ -159,41 +193,195 @@
 
                             <div class="flex bg-white rounded-xl space-x-0 mb-6 items-center">
                                 <div class="w-1/2">
-                                    <button class="py-15 relative group overflow-hidden pl-6 h-14 flex items-center">
+                                    <button class="py-15 relative group overflow-hidden pl-6 h-12 flex items-center">
                                         <span class="relative font-semibold text-gray-500 ">Start Date</span>
                                 </div>
-                                <div class="w-1/2 p-4">
+                                <div class="w-1/2">
                                     <input type="date" class="justify-center hover:bg-gray-100 border-none required">
                                 </div>
                             </div>
 
                             <div class="flex bg-white rounded-xl space-x-0 mb-6 items-center">
                                 <div class="w-1/2">
-                                    <button class="py-15 relative group overflow-hidden pl-6 h-14 flex items-center">
+                                    <button class="py-15 relative group overflow-hidden pl-6 h-12 flex items-center">
                                         <span class="relative font-semibold text-gray-500 ">End Date</span>
                                 </div>
-                                <div class="w-1/2 p-4">
+                                <div class="w-1/2">
                                     <input type="date" class="justify-center hover:bg-gray-100 border-none required">
                                 </div>
                             </div>
+
+                            <div class="flex bg-white rounded-xl space-x-0 mb-6">
+                                <div class="w-1/2">
+                                    <label class="py-4 relative group overflow-hidden pl-6 h-12 flex items-center">
+                                        <span class="relative font-semibold text-gray-500 ">Room</span>
+                                </div>
+                                <div class="w-1/2 pl-4 items-center">
+                                    <select name="Select the room" class="justify-center border-none hover:bg-gray-100"
+                                        required>
+                                        <option> Room 1 </option>
+                                        <option> Room 2 </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="bg-slate-50 mt-6 pb-14 rounded-xl justify-items-center">
+                                <h3 class="font-semibold text-2xl text-gray-700 pb-4">
+                                    Fill the Resident Data
+                                </h3>
+                                <!--FULL NAME-->
+                                <div class="pb-5 h-14 items-center mb-6">
+                                    <label id="name" class="text-base text-primary font-bold pb-4">
+                                        Full Name
+                                    </label>
+                                    <input type="text" id="name" name="name" placeholder="type your name" required
+                                        class="w-full border-none bg-white text-gray-600 p-3 rounded-2xl focus:outline-none focus:ring-sky-600 focus:ring-1 focus:border-sky-600">
+                                </div>
+
+                                <!--GENDER-->
+                                <div class="py-2 h-14 items-center mb-6">
+                                    <label id="gender" class="text-base text-primary font-bold">
+                                        Gender
+                                    </label>
+                                    <div class="flex p-2">
+                                        <div class="w-1/2">
+                                            <label class="cursor-pointer">
+                                                <input type="radio" class="peer sr-only" id="gender" name="gender"
+                                                    required />
+                                                <div
+                                                    class="w-32 rounded-2xl bg-white p-3 text-gray-600 ring-2 ring-transparent transition-all hover:shadow peer-checked:text-primary peer-checked:ring-primary peer-checked:ring-offset-2">
+                                                    <div class="flex flex-col gap-1">
+                                                        <div class="flex items-center justify-between">
+                                                            <p class="text-sm font-semibold text-gray-500">Male</p>
+                                                            <div>
+                                                                <svg width="24" height="24" viewBox="0 0 24 24">
+                                                                    <path fill="currentColor"
+                                                                        d="m10.6 13.8l-2.175-2.175q-.275-.275-.675-.275t-.7.3q-.275.275-.275.7q0 .425.275.7L9.9 15.9q.275.275.7.275q.425 0 .7-.275l5.675-5.675q.275-.275.275-.675t-.3-.7q-.275-.275-.7-.275q-.425 0-.7.275ZM12 22q-2.075 0-3.9-.788q-1.825-.787-3.175-2.137q-1.35-1.35-2.137-3.175Q2 14.075 2 12t.788-3.9q.787-1.825 2.137-3.175q1.35-1.35 3.175-2.138Q9.925 2 12 2t3.9.787q1.825.788 3.175 2.138q1.35 1.35 2.137 3.175Q22 9.925 22 12t-.788 3.9q-.787 1.825-2.137 3.175q-1.35 1.35-3.175 2.137Q14.075 22 12 22Z" />
+                                                                </svg>
+                                                            </div>
+                                                        </div>
+                                                        <div class="flex items-end justify-between"></div>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <div class="w-1/2">
+                                            <label class="cursor-pointer">
+                                                <input type="radio" class="peer sr-only" id="gender" name="gender"
+                                                    required />
+                                                <div
+                                                    class="w-32 rounded-2xl bg-white p-3 text-gray-600 ring-2 ring-transparent transition-all hover:shadow peer-checked:text-primary peer-checked:ring-primary peer-checked:ring-offset-2">
+                                                    <div class="flex flex-col gap-1">
+                                                        <div class="flex items-center justify-between">
+                                                            <p class="text-sm font-semibold text-gray-500">Female
+                                                            </p>
+                                                            <div>
+                                                                <svg width="24" height="24" viewBox="0 0 24 24">
+                                                                    <path fill="currentColor"
+                                                                        d="m10.6 13.8l-2.175-2.175q-.275-.275-.675-.275t-.7.3q-.275.275-.275.7q0 .425.275.7L9.9 15.9q.275.275.7.275q.425 0 .7-.275l5.675-5.675q.275-.275.275-.675t-.3-.7q-.275-.275-.7-.275q-.425 0-.7.275ZM12 22q-2.075 0-3.9-.788q-1.825-.787-3.175-2.137q-1.35-1.35-2.137-3.175Q2 14.075 2 12t.788-3.9q.787-1.825 2.137-3.175q1.35-1.35 3.175-2.138Q9.925 2 12 2t3.9.787q1.825.788 3.175 2.138q1.35 1.35 2.137 3.175Q22 9.925 22 12t-.788 3.9q-.787 1.825-2.137 3.175q-1.35 1.35-3.175 2.137Q14.075 22 12 22Z" />
+                                                                </svg>
+                                                            </div>
+                                                        </div>
+                                                        <div class="flex items-end justify-between"></div>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {{-- TELPHONE --}}
+                                <div class="pt-4 pb-8 h-14 items-center mb-6">
+                                    <div class="py-4">
+                                        <label id="term1" class="text-base text-primary font-bold">
+                                            Telphone
+                                        </label>
+                                        <input type="number" name="term1" value="" placeholder="type your number phone"
+                                            required
+                                            class="w-full border-none bg-white text-gray-600 p-3 rounded-2xl focus:outline-none focus:ring-sky-600 focus:ring-1 focus:border-sky-600">
+                                    </div>
+                                </div>
+
+                                {{-- EMAIL --}}
+                                <div class="pt-2">
+                                    <div class="py-4 h-14 items-center">
+                                        <div class="py-4">
+                                            <label id="email" class="text-base text-primary font-bold ">
+                                                Email
+                                            </label>
+                                            <input type="email" name="email" value="" placeholder="example@gmail.com"
+                                                required
+                                                class="w-full border-none bg-white text-gray-600 p-3 rounded-2xl focus:outline-none focus:ring-sky-600 focus:ring-1 focus:border-sky-600">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {{-- FILE ID CARD --}}
+                                <div class="pt-8">
+                                    <div class="py-4 h-14 items-center">
+                                        <div class="py-4">
+                                            <label id="file" class="text-base text-primary font-bold">
+                                                Scan Identity Card
+                                            </label>
+                                            <input type="file" id="file" name="file" required
+                                                class="w-full bg-white text-gray-600 p-3 rounded-2xl focus:outline-none focus:ring-sky-600 focus:ring-1 focus:border-sky-600">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+
+                            <div class="bg-slate-50 mt-3 pt-3 pb-14 rounded-xl justify-items-center">
+                                <h3 class="font-semibold text-2xl text-gray-700">
+                                    Optional Additional Features
+                                </h3>
+                                
+                                <div class="pb-8 h-14 items-center pt-4">
+                                    <div class="flex items-center pl-4 rounded-xl bg-white">
+                                        <div class="flex items-center h-5">
+                                            <input id="helper-checkbox" aria-describedby="helper-checkbox-text" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 focus:ring-2">
+                                        </div>
+                                        <div class="ml-2 text-sm p-2">
+                                            <label for="helper-checkbox" class="font-medium text-gray-900">Trash Bank</label>
+                                            <p id="helper-checkbox-text" class="text-xs font-medium text-gray-500">Rp 25.000,00</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="pb-8 h-14 items-center pt-8">
+                                    <div class="flex items-center pl-4 rounded-xl bg-white">
+                                        <div class="flex items-center h-5">
+                                            <input id="helper-checkbox" aria-describedby="helper-checkbox-text" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 focus:ring-2">
+                                        </div>
+                                        <div class="ml-2 text-sm p-2">
+                                            <label for="helper-checkbox" class="font-medium text-gray-900">Laundry</label>
+                                            <p id="helper-checkbox-text" class="text-xs font-medium text-gray-500">Rp 50.000,00</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-slate-50 rounded-xl justify-items-center">
+                                <h3 class="font-semibold text-2xl text-gray-700">
+                                    Total
+                                </h3>
+                                {{-- FILE ID CARD --}}
+                                <div class="pb-3 h-14 items-center">
+                                    Rp
+                                </div>
+                            </div>
+
                             <!--BUTTON SUBMIT-->
-                            <div class="pl-56 pt-2">
-                                <button type="submit"
-                                    class="transition rounded-2xl bg-slate-400 hover:bg-gray-700 border p-4 relative group overflow-hidden h-14 flex items-center">
-                                    <span class="relative font-semibold text-white">
-                                        Add to cart
-                                    </span>
-                                    <!--ANIMATION ICON-->
-                                    <div aria-hidden="true"
-                                        class="w-14 transition duration-300 -translate-y-7 group-hover:translate-y-7">
-                                        <div class="h-14 flex">
-                                            <img src="img/right-arrow.png" class="h-8 w-8 m-auto fill-white"
-                                                viewBox="0 0 20 20"></img>
-                                        </div>
-                                        <div class="h-14 flex">
-                                            <img src="img/right-arrow.png" class="h-8 w-8 m-auto fill-white"
-                                                viewBox="0 0 20 20"></img>
-                                        </div>
+                            <div class="py-4 text-right">
+                                <button type="button"
+                                    class="text-white bg-primary hover:bg-sky-600 font-medium rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center">
+                                    Add to cart
+                                    <div class="pl-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                                            <path
+                                                d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                                        </svg>
                                     </div>
                                 </button>
                             </div>
@@ -308,8 +496,7 @@
                                         class="rounded-lg border border-gray-300 bg-white px-2 py-1.5 text-xs font-medium text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200">
                                         Edit
                                     </a>
-                                    <button
-                                        class="pl-4 text-sm font-medium text-red-500 hover:underline">
+                                    <button class="pl-4 text-sm font-medium text-red-500 hover:underline">
                                         Delete
                                     </button>
                                 </div>
@@ -386,7 +573,9 @@
                                 <label for="email" class="block mb-2 text-sm font-medium text-gray-900">
                                     Give a review
                                 </label>
-                                <textarea rows="3" name="description" class="w-full px-0 text-sm text-gray-900 bg-white border-0 focus:ring-0" placeholder="Write a review..."></textarea>
+                                <textarea rows="3" name="description"
+                                    class="w-full px-0 text-sm text-gray-900 bg-white border-0 focus:ring-0"
+                                    placeholder="Write a review..."></textarea>
                             </div>
                             <!--FILL REVIEW START-->
 
