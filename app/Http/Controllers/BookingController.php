@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Package;
 use App\Models\Room;
 use App\Models\Price;
+use App\Models\Review;
 use Illuminate\Http\Request;
 
 class BookingController extends Controller
@@ -29,14 +30,22 @@ class BookingController extends Controller
         $prices     = Price::all();
         
         //dd($packages);
-        return view('page.booking', compact('packages','rooms', 'prices'));
+        return view('client.booking.packages', compact('packages','rooms', 'prices'));
+    }
+
+    public function details($package_id){
+        $item = Package::where('package_id', $package_id)->get()->first();
+        $reviews=Review::all();
+        
+        //dd($item);
+        return view('client.booking.details', ['package' => $item], compact('reviews')); 
     }
 
     public function cart(){      
         $packages   = Package::all();
         $prices     = Price::all();
 
-        return view('page.cart', compact('packages', 'prices'));
+        return view('client.booking.cart', compact('packages', 'prices'));
     }
 
     public function add($package_id){
@@ -78,5 +87,16 @@ class BookingController extends Controller
             session()->put('cart', $cart);
             session()->flash('success', 'Cart successfully updated!');
         }
+    }
+
+    public function history(){
+        return view('client.booking.history');
+    }
+
+    public function index()
+    {
+        $reviews=Review::all();
+        return view('client.booking.details', compact('reviews'));
+        //dd($reviews);
     }
 }

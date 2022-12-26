@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Room;
+use App\Models\Package;
 
 use Illuminate\Http\Request;
 
@@ -16,9 +17,20 @@ class RoomController extends Controller
     public function index(Request $request)
     {
         $search = $request->search;
-        $room = Room::where('room_number', 'LIKE', '%' . $search . '%')
-            ->orWhere('max_resident', 'LIKE', '%' . $search . '%')
-            ->paginate(5);
+        $filter = $request->filter;
+
+        if ($search != null) {
+
+            $room = Room::with('packages')
+                ->where('room_number', 'LIKE', '%' . $search . '%')
+                ->orWhere('max_resident', 'LIKE', '%' . $search . '%')
+                ->paginate(5);
+        } else if ($filter != null) {
+            $room = Room::where('room_booked', '=', $filter)->with('packages')
+                ->paginate(5);
+        } else {
+            $room = Room::paginate(5);
+        }
         return view('admin.room/room', compact('room'));
     }
 
@@ -29,7 +41,10 @@ class RoomController extends Controller
      */
     public function create()
     {
-        return view('admin.room.room-create', compact('room'));
+        $package = Package::all();
+
+
+        return view('admin.room.room-create', compact('package'));
     }
 
     /**
@@ -40,7 +55,27 @@ class RoomController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $response = new Room;
+
+        $validasi = $request->validate(
+            [
+                'resident' => 'required',
+                'number' => 'required|numeric',
+                'package' => 'required',
+
+            ]
+        );
+        try {
+            $response->max_resident = $validasi['resident'];
+            $response->room_number = $validasi['number'];
+            $response->package_id = $validasi['package'];
+
+            $response->save();
+
+            return redirect('/room')->with('toast_success', 'Data Sucessfully added');
+        } catch (\Exception $e) {
+            echo $e->getMessage();
+        }
     }
 
     /**
@@ -62,7 +97,9 @@ class RoomController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.room.room-edit', compact('room'));
+        $room = Room::where('room_id', $id)->with('packages')->first();
+        $package = Package::all();
+        return view('admin.room.room-edit', compact('room', 'package'));
     }
 
     /**
@@ -74,7 +111,26 @@ class RoomController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validasi = $request->validate(
+            [
+                'resident' => 'required',
+                'number' => 'required|numeric',
+                'package' => 'required',
+            ]
+        );
+        try {
+            $response = Room::where('room_id', $id)->first();
+            $response->max_resident = $validasi['resident'];
+            $response->room_number = $validasi['number'];
+            $response->package_id = $validasi['package'];
+
+            $response->save();
+
+
+            return redirect('/room')->with('toast_success', 'Data Sucessfully updated');
+        } catch (\Exception $e) {
+            echo $e->getMessage();
+        }
     }
 
     /**
@@ -85,6 +141,7 @@ class RoomController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Room::findOrFail($id)->delete();
+        return redirect('/room')->with('toast_success', 'Data Successfully deleted');
     }
 }

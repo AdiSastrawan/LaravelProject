@@ -10,15 +10,16 @@
     <title>{{ config('Laravel', 'Admin Page | kos.kita') }}</title>
 
     <!--FONTS-->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
     <!--ICON-->
     <link rel="shortcut icon" href="img/logo.png">
 
     <!--Tailwind-->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/script.js" async></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
     <style>
         .bg-sidebar {
@@ -53,10 +54,11 @@
 
 <body class="bg-gray-100 font-poppins flex">
     @include('layouts.admin_nav')
-        <div class="w-full overflow-x-hidden border-t flex flex-col">
-            {{$slot}}
-        </div>
+    <div class="w-full overflow-x-hidden border-t flex flex-col">
+        {{ $slot }}
+    </div>
     @include('layouts.admin_footer')
+    @include('sweetalert::alert')
 </body>
 
 </html>
