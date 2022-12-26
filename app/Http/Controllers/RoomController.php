@@ -42,9 +42,9 @@ class RoomController extends Controller
     public function create()
     {
         $package = Package::all();
-        $room_number = Room::select('room_number')->latest('created_at')->first();
 
-        return view('admin.room.room-create', compact('package', 'room_number'));
+
+        return view('admin.room.room-create', compact('package'));
     }
 
     /**
