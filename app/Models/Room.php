@@ -17,9 +17,4 @@ class Room extends Model
     {
         return $this->belongsTo(Package::class, 'package_id', 'package_id');
     }
-
-    public function prices()
-    {
-        return $this->belongsTo(Price::class, 'price_id', 'price_id');
-    }
 }
