@@ -10,4 +10,9 @@ class Facilities extends Model
     use HasFactory;
     public $primaryKey = 'facility_id';
     protected $table = "facilities";
+
+    public function packages()
+    {
+        return $this->hasOne(Package::class, 'facility_id', 'facility_id');
+    }
 }
