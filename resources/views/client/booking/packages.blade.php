@@ -1,7 +1,7 @@
 <x-page-layout>
     <!--BOOKING SECTION START-->
     <div class="px-6 md:px-12 lg:container lg:mx-auto lg:px-6 lg:py-3">
-        <section id="booking" class="items-center">
+        <section id="packages" class="items-center">
 
             <!--NAVIGATION DETAILS-->
             <div class="relative w-full pl-10">
@@ -9,7 +9,7 @@
                     <nav class="flex" aria-label="Breadcrumb">
                         <ol class="inline-flex items-center space-x-1 md:space-x-3">
                             <li class="inline-flex items-center">
-                                <a href="{{ url('booking') }}" class="inline-flex items-center text-lg font-semibold text-gray-600 hover:text-gray-900">
+                                <a href="{{ url('packages') }}" class="inline-flex items-center text-lg font-semibold text-gray-600 hover:text-gray-900">
                                     Packages
                                 </a>
                             </li>
@@ -86,7 +86,7 @@
                                 max  person
                             </div> --}}
 
-                            <a href="{{ url('booking-details') }}"
+                            <a href="details/{{ $item['package_id'] }}"
                                 class="bg-white px-3 py-1 rounded-xl border border-gray-300 text-sm font-medium text-gray-600 transition duration-300 hover:border-transparent">
                                 Details
                             </a>

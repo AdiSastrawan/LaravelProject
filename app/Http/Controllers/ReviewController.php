@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Review;
+use App\Models\Package;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,8 +16,11 @@ class ReviewController extends Controller
      */
     public function index()
     {
+        $item = Package::where('package_id', $package_id)->get()->first();
         $reviews=Review::all();
-        return view('page.booking-details', compact('reviews'));
+        $packages   = Package::all();
+
+        return view('client.booking.details', ['package' => $item], compact('reviews'));
     }
 
     /**
@@ -27,7 +31,7 @@ class ReviewController extends Controller
     public function create()
     {
         $reviews=Review::all();
-        return view('page.booking-details', compact('reviews'));
+        return view('client.booking.details', compact('reviews'));
     }
 
     /**
@@ -45,7 +49,7 @@ class ReviewController extends Controller
 
         $validation['user_id']=Auth::id();
         Review::create($validation);
-        return redirect('booking-details');
+        return redirect('details');
     }
 
     /**
@@ -68,7 +72,7 @@ class ReviewController extends Controller
     public function edit($id)
     {
         $reviews=Review::find($id);
-        return view('page.edit-reviews', compact('reviews'));
+        return view('client.review.edit-reviews', compact('reviews'));
     }
 
     /**
@@ -87,7 +91,7 @@ class ReviewController extends Controller
 
         $validation['user_id']=Auth::id();
         Review::where('id',$id)->update($validation);
-        return redirect('booking-details');
+        return redirect('details');
     }
 
     /**
@@ -99,6 +103,6 @@ class ReviewController extends Controller
     public function destroy($id)
     {
         Review::where('id',$id)->delete();
-        return redirect('booking-details');
+        return redirect('details');
     }
 }
