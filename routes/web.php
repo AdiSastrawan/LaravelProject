@@ -21,12 +21,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-<<<<<<< HEAD
 
-=======
-Route::get('/' , [PageController::class, 'landing']);
-Route::get('/home' , [PageController::class, 'landing'])->name('home');
->>>>>>> 6500b9a6136c6971cd03190098c1a08a8822c260
+
+Route::get('/', [PageController::class, 'landing']);
+Route::get('/home', [PageController::class, 'landing'])->name('home');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -40,20 +39,15 @@ Route::get('login-acc', function () {
     return view('login-acc');
 });
 
-<<<<<<< HEAD
 
+Route::get('/packages', [BookingController::class, 'package'])->name('packages');
+Route::get('/details/{package_id}', [BookingController::class, 'details'])->name('details');
+Route::get('/cart', [BookingController::class, 'cart'])->name('cart');
 
-
-
-=======
-Route::get('/packages' , [BookingController::class, 'package'])->name('packages');
-Route::get('/details/{package_id}' , [BookingController::class, 'details'])->name('details');
-Route::get('/cart' , [BookingController::class, 'cart'])->name('cart');
->>>>>>> 6500b9a6136c6971cd03190098c1a08a8822c260
 Route::get('add-to-cart/{package_id}', [BookingController::class, 'add'])->name('add-to-cart');
 Route::delete('remove-from-cart', [BookingController::class, 'remove'])->name('remove-from-cart');
 Route::patch('update-cart', [BookingController::class, 'update'])->name('update-cart');
-Route::get('/history' , [BookingController::class, 'history'])->name('history');
+Route::get('/history', [BookingController::class, 'history'])->name('history');
 
 Route::get('/admin', [AdminController::class, 'index'])->name('admin-index')->middleware('auth', 'isadmin');
 
@@ -61,9 +55,8 @@ Route::resource('package', PackageController::class)->middleware('auth', 'isadmi
 Route::resource('room', RoomController::class)->middleware('auth', 'isadmin');
 Route::resource('facility', FacilityController::class)->middleware('auth', 'isadmin');
 
-<<<<<<< HEAD
 
-=======
+
+
 Route::resource('/details', ReviewController::class);
 Route::resource('/edit-reviews', ReviewController::class);
->>>>>>> 6500b9a6136c6971cd03190098c1a08a8822c260
