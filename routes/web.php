@@ -45,8 +45,6 @@ Route::get('login-acc', function () {
 
 
 
-Route::get('/booking', [BookingController::class, 'package'])->name('booking');
-Route::get('/cart', [BookingController::class, 'cart'])->name('cart');
 =======
 Route::get('/packages' , [BookingController::class, 'package'])->name('packages');
 Route::get('/details/{package_id}' , [BookingController::class, 'details'])->name('details');
