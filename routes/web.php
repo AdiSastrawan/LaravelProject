@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 <<<<<<< HEAD
-Route::get('/', [PageController::class, 'landingPage']);
+
 =======
 Route::get('/' , [PageController::class, 'landing']);
 Route::get('/home' , [PageController::class, 'landing'])->name('home');
@@ -41,9 +41,9 @@ Route::get('login-acc', function () {
 });
 
 <<<<<<< HEAD
-Route::get('/home', [PageController::class, 'landingPage'])->name('home');
-Route::get('/booking-details', [PageController::class, 'bookingDetailsPage'])->name('booking-details');
-Route::get('/user-booking', [PageController::class, 'userBookingPage'])->name('user-booking');
+
+
+
 
 Route::get('/booking', [BookingController::class, 'package'])->name('booking');
 Route::get('/cart', [BookingController::class, 'cart'])->name('cart');
@@ -64,8 +64,7 @@ Route::resource('room', RoomController::class)->middleware('auth', 'isadmin');
 Route::resource('facility', FacilityController::class)->middleware('auth', 'isadmin');
 
 <<<<<<< HEAD
-Route::resource('/booking-details', ReviewController::class);
-Route::resource('/edit-reviews', ReviewController::class);
+
 =======
 Route::resource('/details', ReviewController::class);
 Route::resource('/edit-reviews', ReviewController::class);
