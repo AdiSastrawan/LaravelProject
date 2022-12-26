@@ -1,4 +1,5 @@
 <x-page-layout>
+    <!--CART SECTION START-->
     <div class="px-6 md:px-12 lg:container lg:mx-auto lg:px-6 lg:py-3">
         <section id="cart" class="items-center">
 
@@ -8,7 +9,7 @@
                     <nav class="flex" aria-label="Breadcrumb">
                         <ol class="inline-flex items-center space-x-1 md:space-x-3">
                             <li class="inline-flex items-center">
-                                <a href="{{ url('booking') }}" class="inline-flex items-center text-lg font-medium text-gray-500 hover:text-gray-900">
+                                <a href="{{ url('packages') }}" class="inline-flex items-center text-lg font-medium text-gray-500 hover:text-gray-900">
                                     Packages
                                 </a>
                             </li>

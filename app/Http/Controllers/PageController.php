@@ -10,11 +10,7 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
-    public function loginPage(){
-        return view('page.login');
-    }
-
-    public function landingPage(){
+    public function landing(){
         $packages   = Package::all();
         $prices     = Price::all();
 
@@ -23,41 +19,10 @@ class PageController extends Controller
                 return redirect('/admin');
             }else{
 
-                return view('page.landing',['title'=>"home"], compact('packages', 'prices'));
+                return view('client.landing',['title'=>"home"], compact('packages', 'prices'));
             }
         }else{
-            return view('page.landing',['title'=>"home"], compact('packages', 'prices'));
+            return view('client.landing',['title'=>"home"], compact('packages', 'prices'));
         }
-    }
-
-    public function bookingPage(){
-        //statis
-        /*
-        $packages=[
-            (object)[
-            'package_code'=>'Example Code',
-            'package_name'=>'Example Name',
-            'package_desc'=>'Example Desc',
-            ],
-            (object)[
-            'package_code'=>'Example Code 2',
-            'package_name'=>'Example Name 2',
-            'package_desc'=>'Example Desc 2',
-            ]
-        ];
-        */
-        $packages=Package::all();
-        $rooms=Room::all();
-        $prices=Price::all();
-        //dd($packages);
-        return view('page.booking', compact('packages','rooms', 'prices'));
-    }
-
-    public function bookingDetailsPage(){
-        return view('page.booking-details',['title'=>"booking-details"]);
-    }
-
-    public function userBookingPage(){
-        return view('page.user-booking',['title'=>"user-booking"]);
     }
 }

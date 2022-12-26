@@ -13,7 +13,7 @@
                         A clean and simple boarding house that have many interesting facilities that you should try!
                     </p>
                     <div class="flex justify-center flex-wrap gap-6">
-                        <a href="{{ url('booking') }}"
+                        <a href="{{ url('packages') }}"
                             class="group font-semibold block px-6 py-3 rounded-xl bg-gradient-to-r from-sky-400 to-sky-500 text-center text-white transition duration-200 hover:shadow-2xl">
                             Book Now
                         </a>
@@ -189,7 +189,7 @@
                                     {{$item->package_desc}}
                                 </p>
                                 <div class="pt-1 text-right">
-                                    <a href="{{ url('booking-details') }}"
+                                    <a href="{{ url('details') }}"
                                         class="bg-white px-3 py-1 rounded-xl border border-gray-300 text-sm font-medium text-gray-600 transition duration-300 hover:bg-slate-200">
                                         Details
                                     </a>
@@ -209,7 +209,7 @@
                                     Let's be a part of koskita family members by booking a room in this boarding house.
                                 </p>
                                 <div class="flex flex-wrap justify-center gap-6">
-                                    <a href="{{ url('booking') }}"
+                                    <a href="{{ url('packages') }}"
                                         class="relative flex h-12 w-full items-center justify-center px-8 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max">
                                         <span class="relative text-base font-semibold text-white">Booking
                                             Now</span>

@@ -20,7 +20,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/' , [PageController::class, 'landingPage']);
+Route::get('/' , [PageController::class, 'landing']);
+Route::get('/home' , [PageController::class, 'landing'])->name('home');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -34,20 +35,18 @@ Route::get('login-acc', function () {
     return view('login-acc');
 });
 
-Route::get('/home' , [PageController::class, 'landingPage'])->name('home');
-Route::get('/booking-details' , [PageController::class, 'bookingDetailsPage'])->name('booking-details');
-Route::get('/user-booking' , [PageController::class, 'userBookingPage'])->name('user-booking');
-
-Route::get('/booking' , [BookingController::class, 'package'])->name('booking');
+Route::get('/packages' , [BookingController::class, 'package'])->name('packages');
+Route::get('/details/{package_id}' , [BookingController::class, 'details'])->name('details');
 Route::get('/cart' , [BookingController::class, 'cart'])->name('cart');
 Route::get('add-to-cart/{package_id}', [BookingController::class, 'add'])->name('add-to-cart');
 Route::delete('remove-from-cart', [BookingController::class, 'remove'])->name('remove-from-cart');
 Route::patch('update-cart', [BookingController::class, 'update'])->name('update-cart');
+Route::get('/history' , [BookingController::class, 'history'])->name('history');
 
 Route::get('/admin', [AdminController::class, 'index'])->name('admin-index')->middleware('auth', 'isadmin');
 
 Route::resource('package', PackageController::class)->middleware('auth', 'isadmin');
 Route::resource('room', RoomController::class)->middleware('auth', 'isadmin');
 
-Route::resource('/booking-details', ReviewController::class);
+Route::resource('/details', ReviewController::class);
 Route::resource('/edit-reviews', ReviewController::class);

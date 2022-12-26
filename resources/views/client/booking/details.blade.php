@@ -1,7 +1,7 @@
 <x-page-layout>
-    <!--BOOKING SECTION START-->
+    <!--DETAILS SECTION START-->
     <div class="px-6 md:px-12 lg:container lg:mx-auto lg:px-6 lg:py-3">
-        <section id="booking" class="items-center">
+        <section id="details" class="items-center">
 
             <!--NAVIGATION DETAILS-->
             <div class="relative w-full pl-10">
@@ -9,24 +9,36 @@
                     <nav class="flex" aria-label="Breadcrumb">
                         <ol class="inline-flex items-center space-x-1 md:space-x-3">
                             <li class="inline-flex items-center">
-                                <a href="{{ url('booking') }}" class="inline-flex items-center text-lg font-medium text-gray-500 hover:text-gray-900">
+                                <a href="{{ url('packages') }}"
+                                    class="inline-flex items-center text-lg font-medium text-gray-500 hover:text-gray-900">
                                     Packages
                                 </a>
                             </li>
                             <li>
                                 <div class="flex items-center">
-                                <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
-                                <a href="" class="ml-1 text-lg font-semibold text-gray-600 hover:text-gray-900 md:ml-2">
-                                    Details
-                                </a>
+                                    <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                    <a href=""
+                                        class="ml-1 text-lg font-semibold text-gray-600 hover:text-gray-900 md:ml-2">
+                                        Details
+                                    </a>
                                 </div>
                             </li>
                             <li aria-current="page">
                                 <div class="flex items-center">
-                                <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
-                                <span class="ml-1 text-lg font-medium text-gray-500 md:ml-2">
-                                    Cart
-                                </span>
+                                    <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span class="ml-1 text-lg font-medium text-gray-500 md:ml-2">
+                                        Cart
+                                    </span>
                                 </div>
                             </li>
                         </ol>
@@ -38,16 +50,15 @@
                         DETAILS OF PACKAGES
                     </h4>
                     <h2 class="font-bold text-black text-3xl mb-4 sm:text-4xl lg:text-5xl">
-                        Package One
+                        {{ $package['package_name'] }}
                     </h2>
                     <p class="font-medium text-md text-slate-800 md:text-lg">
-                        Pada paket 1 ini anda akan mendapatkan fasilitas dan servis sebagai berikut yang akan dijelaskan
-                        pada bagian
-                        bawah
+                        In this {{ $package['package_name'] }} you will get the following facilities and services
+                        which will be explained at the bottom
                     </p>
                 </div>
             </div>
-            
+
 
             <!--PACKAGE ROOM DETAILS-->
             <div class="md:px-12 lg:px-24">
@@ -328,22 +339,26 @@
                                         </div>
                                     </div>
                                 </div>
-                                
+
                             </div>
 
                             <div class="bg-slate-50 mt-3 pt-3 pb-14 rounded-xl justify-items-center">
                                 <h3 class="font-semibold text-2xl text-gray-700">
                                     Optional Additional Features
                                 </h3>
-                                
+
                                 <div class="pb-8 h-14 items-center pt-4">
                                     <div class="flex items-center pl-4 rounded-xl bg-white">
                                         <div class="flex items-center h-5">
-                                            <input id="helper-checkbox" aria-describedby="helper-checkbox-text" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 focus:ring-2">
+                                            <input id="helper-checkbox" aria-describedby="helper-checkbox-text"
+                                                type="checkbox" value=""
+                                                class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 focus:ring-2">
                                         </div>
                                         <div class="ml-2 text-sm p-2">
-                                            <label for="helper-checkbox" class="font-medium text-gray-900">Trash Bank</label>
-                                            <p id="helper-checkbox-text" class="text-xs font-medium text-gray-500">Rp 25.000,00</p>
+                                            <label for="helper-checkbox" class="font-medium text-gray-900">Trash
+                                                Bank</label>
+                                            <p id="helper-checkbox-text" class="text-xs font-medium text-gray-500">Rp
+                                                25.000,00</p>
                                         </div>
                                     </div>
                                 </div>
@@ -351,11 +366,15 @@
                                 <div class="pb-8 h-14 items-center pt-8">
                                     <div class="flex items-center pl-4 rounded-xl bg-white">
                                         <div class="flex items-center h-5">
-                                            <input id="helper-checkbox" aria-describedby="helper-checkbox-text" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 focus:ring-2">
+                                            <input id="helper-checkbox" aria-describedby="helper-checkbox-text"
+                                                type="checkbox" value=""
+                                                class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 focus:ring-2">
                                         </div>
                                         <div class="ml-2 text-sm p-2">
-                                            <label for="helper-checkbox" class="font-medium text-gray-900">Laundry</label>
-                                            <p id="helper-checkbox-text" class="text-xs font-medium text-gray-500">Rp 50.000,00</p>
+                                            <label for="helper-checkbox"
+                                                class="font-medium text-gray-900">Laundry</label>
+                                            <p id="helper-checkbox-text" class="text-xs font-medium text-gray-500">Rp
+                                                50.000,00</p>
                                         </div>
                                     </div>
                                 </div>
@@ -487,7 +506,7 @@
 
                         <!--ADDITIONAL-->
                         <aside>
-                            <form action="{{ route('booking-details.destroy', $item->id) }}" method="POST">
+                            <form action="{{ route('details.destroy', $item->id) }}" method="POST">
                                 @csrf
                                 @method('delete')
                                 <p class="mt-1 text-xs text-gray-500">5 people found this helpful</p>
@@ -510,7 +529,7 @@
                     <h3 class="font-semibold text-lg text-primary mb-2 ml-2 pt-5">
                         Add My Reviews
                     </h3>
-                    <form action="{{route('booking-details.store')}}" method="POST">
+                    <form action="{{route('details.store')}}" method="POST">
                         @csrf
                         <div class="w-full p-6 mb-4 border border-gray-200 rounded-lg bg-gray-50">
                             <!--FILL RATING START-->
