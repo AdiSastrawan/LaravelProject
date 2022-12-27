@@ -100,12 +100,17 @@
                                         </td>
                                         @php $total+=$item['total']@endphp
                                         <td class="py-4 px-6 w-1/5 h-fit">
-                                            <div class="font-medium text-red-600 dark:text-red-500 hover:underline">
-                                                <button
-                                                    class="btn btn-danger btn-sm cart-remove pl-4 text-sm font-medium text-red-500 hover:underline">
-                                                    Remove
-                                                </button>
-                                            </div>
+                                            <form action="{{ route('remove-from-cart', ['id' => $item['room_id']]) }}"
+                                                method="post" id='delete'>
+                                                @csrf
+                                                @method('DELETE')
+                                                <div class="font-medium text-red-600 dark:text-red-500 hover:underline">
+                                                    <button type='submit'
+                                                        class="btn btn-danger btn-sm cart-remove pl-4 text-sm font-medium text-red-500 hover:underline">
+                                                        Remove
+                                                    </button>
+                                                </div>
+                                            </form>
                                         </td>
                                         {{-- QTY BUTTON --}}
 
@@ -127,7 +132,7 @@
                     </table>
                 </div>
                 <div class="pt-6 text-right">
-                    <a href="{{ url('success') }}"
+                    <div
                         class="text-white bg-primary hover:bg-sky-600 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center">
                         <p onclick="confirmCheckout()">Checkout</p>
                         <svg aria-hidden="true" class="ml-2 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
@@ -136,7 +141,7 @@
                                 d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
                                 clip-rule="evenodd"></path>
                         </svg>
-                    </a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -171,8 +176,6 @@
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
                 confirmButtonText: '<a href="{{ route('insert-cart') }}">Confirm</a>'
-            }).then((result) => {
-                // <a href="{{ url('success') }}"></a>
             })
         }
         $(".cart-remove").click(function(e) {
@@ -190,17 +193,7 @@
                 confirmButtonText: 'Yes, delete it!'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    $.ajax({
-                        url: "{{ route('remove-from-cart') }}",
-                        method: "DELETE",
-                        data: {
-                            _token: '{{ csrf_token() }}',
-                            id: ele.parents("tr").attr("data-id")
-                        },
-                        success: function(response) {
-                            window.location.reload();
-                        }
-                    });
+                    document.getElementById('delete').submit();
                 }
             })
 

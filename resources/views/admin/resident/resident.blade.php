@@ -11,8 +11,8 @@
                     <select name="filter"
                         class=" h-full rounded-r border-t sm:rounded-r-none sm:border-r-0 border-r border-b block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500">
                         <option value="">All</option>
-                        <option value="1">Booked Room</option>
-                        <option value="0">Unbooked Room</option>
+                        <option value="1">Validated</option>
+                        <option value="0">Not Validated</option>
                     </select>
                     <button type="submit"
                         class="flex items-center px-1 w-14 justify-center hover:bg-gray-200 bg-white border border-gray-400">Filter</button>
@@ -80,162 +80,172 @@
                         </thead>
                         <tbody>
                             @foreach ($rent as $r)
-                            <tr>
-                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    {{ $r->users['name'] }}
-                                </td>
-                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    {{ $r->resident_name }}
-                                </td>
-                                {{-- <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                <tr>
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        {{ $r->users['name'] }}
+                                    </td>
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        {{ $r->resident_name }}
+                                    </td>
+                                    {{-- <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                     {{ $r->resident_telp }}
                                 </td> --}}
-                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    {{ $r->rooms['room_number'] }}
-                                </td>
-                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    @if ($r->laundry == 1)
-                                    <ul>
-                                        <li class="list-none">
-                                            <div class="block font-medium text-md text-slate-800 md:text-md">
-                                                <div class="inline-flex items-center">
-                                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                                        xmlns:xlink="http://www.w3.org/1999/xlink" width="20px" height="20px"
-                                                        viewBox="0 0 36 36" aria-hidden="true" role="img"
-                                                        class="iconify iconify--twemoji" preserveAspectRatio="xMidYMid meet">
-                                                        <path fill="#77B255"
-                                                            d="M36 32a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v28z" />
-                                                        <path fill="#FFF"
-                                                            d="M29.28 6.362a2.502 2.502 0 0 0-3.458.736L14.936 23.877l-5.029-4.65a2.5 2.5 0 1 0-3.394 3.671l7.209 6.666c.48.445 1.09.665 1.696.665c.673 0 1.534-.282 2.099-1.139c.332-.506 12.5-19.27 12.5-19.27a2.5 2.5 0 0 0-.737-3.458z" />
-                                                    </svg> 
-                                                    <div class="pl-4">
-                                                        Laundry
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        {{ $r->rooms['room_number'] }}
+                                    </td>
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        @if ($r->laundry == 1)
+                                            <ul>
+                                                <li class="list-none">
+                                                    <div class="block font-medium text-md text-slate-800 md:text-md">
+                                                        <div class="inline-flex items-center">
+                                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                                xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                width="20px" height="20px" viewBox="0 0 36 36"
+                                                                aria-hidden="true" role="img"
+                                                                class="iconify iconify--twemoji"
+                                                                preserveAspectRatio="xMidYMid meet">
+                                                                <path fill="#77B255"
+                                                                    d="M36 32a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v28z" />
+                                                                <path fill="#FFF"
+                                                                    d="M29.28 6.362a2.502 2.502 0 0 0-3.458.736L14.936 23.877l-5.029-4.65a2.5 2.5 0 1 0-3.394 3.671l7.209 6.666c.48.445 1.09.665 1.696.665c.673 0 1.534-.282 2.099-1.139c.332-.506 12.5-19.27 12.5-19.27a2.5 2.5 0 0 0-.737-3.458z" />
+                                                            </svg>
+                                                            <div class="pl-4">
+                                                                Laundry
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    @else
-                                        <li class="list-none">
-                                            <div class="block font-medium text-md text-slate-800 md:text-md">
-                                                <div class="inline-flex items-center">
-                                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="20px"
-                                                            height="20px" viewBox="0 0 512 512" aria-hidden="true"
-                                                            role="img" class="iconify iconify--fxemoji"
-                                                            preserveAspectRatio="xMidYMid meet">
-                                                            <path fill="#FF473E"
-                                                                d="M330.443 256l136.765-136.765c14.058-14.058 14.058-36.85 0-50.908l-23.535-23.535c-14.058-14.058-36.85-14.058-50.908 0L256 181.557L119.235 44.792c-14.058-14.058-36.85-14.058-50.908 0L44.792 68.327c-14.058 14.058-14.058 36.85 0 50.908L181.557 256L44.792 392.765c-14.058 14.058-14.058 36.85 0 50.908l23.535 23.535c14.058 14.058 36.85 14.058 50.908 0L256 330.443l136.765 136.765c14.058 14.058 36.85 14.058 50.908 0l23.535-23.535c14.058-14.058 14.058-36.85 0-50.908L330.443 256z" />
-                                                    </svg>
-                                                    <div class="pl-4">
-                                                        Laundry
+                                                </li>
+                                            @else
+                                                <li class="list-none">
+                                                    <div class="block font-medium text-md text-slate-800 md:text-md">
+                                                        <div class="inline-flex items-center">
+                                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                                xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                width="20px" height="20px" viewBox="0 0 512 512"
+                                                                aria-hidden="true" role="img"
+                                                                class="iconify iconify--fxemoji"
+                                                                preserveAspectRatio="xMidYMid meet">
+                                                                <path fill="#FF473E"
+                                                                    d="M330.443 256l136.765-136.765c14.058-14.058 14.058-36.85 0-50.908l-23.535-23.535c-14.058-14.058-36.85-14.058-50.908 0L256 181.557L119.235 44.792c-14.058-14.058-36.85-14.058-50.908 0L44.792 68.327c-14.058 14.058-14.058 36.85 0 50.908L181.557 256L44.792 392.765c-14.058 14.058-14.058 36.85 0 50.908l23.535 23.535c14.058 14.058 36.85 14.058 50.908 0L256 330.443l136.765 136.765c14.058 14.058 36.85 14.058 50.908 0l23.535-23.535c14.058-14.058 14.058-36.85 0-50.908L330.443 256z" />
+                                                            </svg>
+                                                            <div class="pl-4">
+                                                                Laundry
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    @endif
-                                    </ul>
-
-                                    @if ($r->trash_bank == 1)
-                                    <ul class="">
-                                        <li class="list-none">
-                                            <div class="block pb-2 font-medium text-md text-slate-800 md:text-md">
-                                                <div class="inline-flex items-center">
-                                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                                        xmlns:xlink="http://www.w3.org/1999/xlink" width="20px" height="20px"
-                                                        viewBox="0 0 36 36" aria-hidden="true" role="img"
-                                                        class="iconify iconify--twemoji" preserveAspectRatio="xMidYMid meet">
-                                                        <path fill="#77B255"
-                                                            d="M36 32a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v28z" />
-                                                        <path fill="#FFF"
-                                                            d="M29.28 6.362a2.502 2.502 0 0 0-3.458.736L14.936 23.877l-5.029-4.65a2.5 2.5 0 1 0-3.394 3.671l7.209 6.666c.48.445 1.09.665 1.696.665c.673 0 1.534-.282 2.099-1.139c.332-.506 12.5-19.27 12.5-19.27a2.5 2.5 0 0 0-.737-3.458z" />
-                                                    </svg> 
-                                                    <div class="pl-4">
-                                                        Trash Bank
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    @else
-                                        <li class="list-none">
-                                            <div class="block font-medium text-md text-slate-800 md:text-md">
-                                                <div class="inline-flex items-center">
-                                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="20px"
-                                                            height="20px" viewBox="0 0 512 512" aria-hidden="true"
-                                                            role="img" class="iconify iconify--fxemoji"
-                                                            preserveAspectRatio="xMidYMid meet">
-                                                            <path fill="#FF473E"
-                                                                d="M330.443 256l136.765-136.765c14.058-14.058 14.058-36.85 0-50.908l-23.535-23.535c-14.058-14.058-36.85-14.058-50.908 0L256 181.557L119.235 44.792c-14.058-14.058-36.85-14.058-50.908 0L44.792 68.327c-14.058 14.058-14.058 36.85 0 50.908L181.557 256L44.792 392.765c-14.058 14.058-14.058 36.85 0 50.908l23.535 23.535c14.058 14.058 36.85 14.058 50.908 0L256 330.443l136.765 136.765c14.058 14.058 36.85 14.058 50.908 0l23.535-23.535c14.058-14.058 14.058-36.85 0-50.908L330.443 256z" />
-                                                    </svg>
-                                                    <div class="pl-4">
-                                                        Trash Bank
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    @endif
-                                    </ul>
-                                </td>
-                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    {{ $r->date_started }}
-                                </td>
-                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    {{ $r->date_ended }}
-                                </td>
-                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm justify-center">
-                                    @if ($r->validation == 1)
-                                    <div class="pl-5">
-                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                width="20px" height="20px" viewBox="0 0 36 36" aria-hidden="true"
-                                                role="img" class="iconify iconify--twemoji"
-                                                preserveAspectRatio="xMidYMid meet">
-                                                <path fill="#77B255"
-                                                    d="M36 32a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v28z" />
-                                                <path fill="#FFF"
-                                                    d="M29.28 6.362a2.502 2.502 0 0 0-3.458.736L14.936 23.877l-5.029-4.65a2.5 2.5 0 1 0-3.394 3.671l7.209 6.666c.48.445 1.09.665 1.696.665c.673 0 1.534-.282 2.099-1.139c.332-.506 12.5-19.27 12.5-19.27a2.5 2.5 0 0 0-.737-3.458z" />
-                                            </svg>
-                                        </div>
-                                        @else
-                                        <div class="pl-5">
-                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                width="20px" height="20px" viewBox="0 0 512 512" aria-hidden="true"
-                                                role="img" class="iconify iconify--fxemoji"
-                                                preserveAspectRatio="xMidYMid meet">
-                                                <path fill="#FF473E"
-                                                    d="M330.443 256l136.765-136.765c14.058-14.058 14.058-36.85 0-50.908l-23.535-23.535c-14.058-14.058-36.85-14.058-50.908 0L256 181.557L119.235 44.792c-14.058-14.058-36.85-14.058-50.908 0L44.792 68.327c-14.058 14.058-14.058 36.85 0 50.908L181.557 256L44.792 392.765c-14.058 14.058-14.058 36.85 0 50.908l23.535 23.535c14.058 14.058 36.85 14.058 50.908 0L256 330.443l136.765 136.765c14.058 14.058 36.85 14.058 50.908 0l23.535-23.535c14.058-14.058 14.058-36.85 0-50.908L330.443 256z" />
-                                            </svg>
+                                                </li>
                                         @endif
-                                    </div>
-                                </td>
-                                
-                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <div class="flex md:flex-nowrap justify-center sm:flex-wrap lg:flex-wrap space-x-2">
+                                        </ul>
 
-                                        <a class="hover:bg-blue-800 py-2 px-3 my-2 border-white text-white bg-blue-500 rounded-md "
-                                            href="{{ route('resident.show', ['resident' => $r->rent_id]) }}">detail</a>
-                                        {{-- <a class="hover:bg-blue-800 py-2 px-3 my-2 border-white text-white bg-blue-500 rounded-md "
+                                        @if ($r->trash_bank == 1)
+                                            <ul class="">
+                                                <li class="list-none">
+                                                    <div
+                                                        class="block pb-2 font-medium text-md text-slate-800 md:text-md">
+                                                        <div class="inline-flex items-center">
+                                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                                xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                width="20px" height="20px" viewBox="0 0 36 36"
+                                                                aria-hidden="true" role="img"
+                                                                class="iconify iconify--twemoji"
+                                                                preserveAspectRatio="xMidYMid meet">
+                                                                <path fill="#77B255"
+                                                                    d="M36 32a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v28z" />
+                                                                <path fill="#FFF"
+                                                                    d="M29.28 6.362a2.502 2.502 0 0 0-3.458.736L14.936 23.877l-5.029-4.65a2.5 2.5 0 1 0-3.394 3.671l7.209 6.666c.48.445 1.09.665 1.696.665c.673 0 1.534-.282 2.099-1.139c.332-.506 12.5-19.27 12.5-19.27a2.5 2.5 0 0 0-.737-3.458z" />
+                                                            </svg>
+                                                            <div class="pl-4">
+                                                                Trash Bank
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            @else
+                                                <li class="list-none">
+                                                    <div class="block font-medium text-md text-slate-800 md:text-md">
+                                                        <div class="inline-flex items-center">
+                                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                                xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                width="20px" height="20px" viewBox="0 0 512 512"
+                                                                aria-hidden="true" role="img"
+                                                                class="iconify iconify--fxemoji"
+                                                                preserveAspectRatio="xMidYMid meet">
+                                                                <path fill="#FF473E"
+                                                                    d="M330.443 256l136.765-136.765c14.058-14.058 14.058-36.85 0-50.908l-23.535-23.535c-14.058-14.058-36.85-14.058-50.908 0L256 181.557L119.235 44.792c-14.058-14.058-36.85-14.058-50.908 0L44.792 68.327c-14.058 14.058-14.058 36.85 0 50.908L181.557 256L44.792 392.765c-14.058 14.058-14.058 36.85 0 50.908l23.535 23.535c14.058 14.058 36.85 14.058 50.908 0L256 330.443l136.765 136.765c14.058 14.058 36.85 14.058 50.908 0l23.535-23.535c14.058-14.058 14.058-36.85 0-50.908L330.443 256z" />
+                                                            </svg>
+                                                            <div class="pl-4">
+                                                                Trash Bank
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                        @endif
+                                        </ul>
+                                    </td>
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        {{ $r->date_started }}
+                                    </td>
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        {{ $r->date_ended }}
+                                    </td>
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm justify-center">
+                                        @if ($r->validation == 1)
+                                            <div class="pl-5">
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink" width="20px"
+                                                    height="20px" viewBox="0 0 36 36" aria-hidden="true"
+                                                    role="img" class="iconify iconify--twemoji"
+                                                    preserveAspectRatio="xMidYMid meet">
+                                                    <path fill="#77B255"
+                                                        d="M36 32a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v28z" />
+                                                    <path fill="#FFF"
+                                                        d="M29.28 6.362a2.502 2.502 0 0 0-3.458.736L14.936 23.877l-5.029-4.65a2.5 2.5 0 1 0-3.394 3.671l7.209 6.666c.48.445 1.09.665 1.696.665c.673 0 1.534-.282 2.099-1.139c.332-.506 12.5-19.27 12.5-19.27a2.5 2.5 0 0 0-.737-3.458z" />
+                                                </svg>
+                                            </div>
+                                        @else
+                                            <div class="pl-5">
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink" width="20px"
+                                                    height="20px" viewBox="0 0 512 512" aria-hidden="true"
+                                                    role="img" class="iconify iconify--fxemoji"
+                                                    preserveAspectRatio="xMidYMid meet">
+                                                    <path fill="#FF473E"
+                                                        d="M330.443 256l136.765-136.765c14.058-14.058 14.058-36.85 0-50.908l-23.535-23.535c-14.058-14.058-36.85-14.058-50.908 0L256 181.557L119.235 44.792c-14.058-14.058-36.85-14.058-50.908 0L44.792 68.327c-14.058 14.058-14.058 36.85 0 50.908L181.557 256L44.792 392.765c-14.058 14.058-14.058 36.85 0 50.908l23.535 23.535c14.058 14.058 36.85 14.058 50.908 0L256 330.443l136.765 136.765c14.058 14.058 36.85 14.058 50.908 0l23.535-23.535c14.058-14.058 14.058-36.85 0-50.908L330.443 256z" />
+                                                </svg>
+                                        @endif
+                </div>
+                </td>
+
+                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                    <div class="flex md:flex-nowrap justify-center sm:flex-wrap lg:flex-wrap space-x-2">
+
+                        <a class="hover:bg-blue-800 py-2 px-3 my-2 border-white text-white bg-blue-500 rounded-md "
+                            href="{{ route('resident.show', ['resident' => $r->rent_id]) }}">detail</a>
+                        {{-- <a class="hover:bg-blue-800 py-2 px-3 my-2 border-white text-white bg-blue-500 rounded-md "
                                             href="{{ route('resident.edit', ['resident' => $r->rent_id]) }}">validate</a> --}}
-                                        <form action="{{ route('resident.update', ['resident' => $r->rent_id]) }}"
-                                            class="py-2 my-2" id="update" method="post">
-                                            @csrf
-                                            <a type="" onclick="validateConfirm()" name="validateConfirm"
-                                                class="hover:bg-blue-800 py-2 px-3 my-2 border-white text-white bg-blue-500 rounded-md cursor-pointer">validate</a>
-                                        </form>
-                                        <form action="{{ route('resident.destroy', ['resident' => $r->rent_id]) }}"
-                                            class="py-2 my-2" id="delete"method="post">
-                                            @csrf
-                                            @method('delete')
-                                            <a type="" onclick="deleteConfirm()" name="deleteConfirm"
-                                                class="hover:bg-red-800 py-2 px-3 border-white text-white m-2 bg-red-500 rounded-md cursor-pointer">delete</a>
-                                        </form>
-                                    </div>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                        <form action="{{ route('resident.update', ['resident' => $r->rent_id]) }}" class="py-2 my-2"
+                            id="update" method="post">
+                            @method('PUT')
+                            @csrf
+                            <a type="" onclick="validateConfirm()" name="validateConfirm"
+                                class="hover:bg-blue-800 py-2 px-3 my-2 border-white text-white bg-blue-500 rounded-md cursor-pointer">validate</a>
+                        </form>
+                        <form action="{{ route('resident.destroy', ['resident' => $r->rent_id]) }}" class="py-2 my-2"
+                            id="delete"method="post">
+                            @csrf
+                            @method('delete')
+                            <a type="" onclick="deleteConfirm()" name="deleteConfirm"
+                                class="hover:bg-red-800 py-2 px-3 border-white text-white m-2 bg-red-500 rounded-md cursor-pointer">delete</a>
+                        </form>
+                    </div>
+                </td>
+                </tr>
+                @endforeach
+                </tbody>
+                </table>
 
-                    {{-- <div
+                {{-- <div
                         class="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between          ">
                         <span class="text-xs xs:text-sm text-gray-900">
                             Showing 1 to 4 of 50 Entries
@@ -251,9 +261,9 @@
                             </button>
                         </div>
                     </div> --}}
-                </div>
             </div>
         </div>
+    </div>
     </div>
     <script>
         function deleteConfirm() {
@@ -288,6 +298,6 @@
                     document.getElementById('update').submit();
                 }
             })
-            }
+        }
     </script>
 </x-admin-layout>
