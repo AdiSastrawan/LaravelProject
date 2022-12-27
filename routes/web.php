@@ -49,6 +49,7 @@ Route::get('add-to-cart/{package_id}', [BookingController::class, 'add'])->name(
 Route::delete('remove-from-cart', [BookingController::class, 'remove'])->name('remove-from-cart');
 Route::patch('update-cart', [BookingController::class, 'update'])->name('update-cart');
 Route::get('/history', [BookingController::class, 'history'])->name('history');
+Route::get('/success', [BookingController::class, 'success'])->name('success');
 
 Route::get('/admin', [AdminController::class, 'index'])->name('admin-index')->middleware('auth', 'isadmin');
 

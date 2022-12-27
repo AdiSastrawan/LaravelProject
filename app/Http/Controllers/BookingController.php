@@ -93,10 +93,7 @@ class BookingController extends Controller
         return view('client.booking.history');
     }
 
-    public function index()
-    {
-        $reviews=Review::all();
-        return view('client.booking.details', compact('reviews'));
-        //dd($reviews);
+    public function success(){
+        return view('client.booking.success');
     }
 }

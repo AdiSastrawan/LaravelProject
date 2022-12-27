@@ -189,7 +189,7 @@
                                     {{$item->package_desc}}
                                 </p>
                                 <div class="pt-1 text-right">
-                                    <a href="{{ url('details') }}"
+                                    <a href="details/{{ $item['package_id'] }}"
                                         class="bg-white px-3 py-1 rounded-xl border border-gray-300 text-sm font-medium text-gray-600 transition duration-300 hover:bg-slate-200">
                                         Details
                                     </a>
