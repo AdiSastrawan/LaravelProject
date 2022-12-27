@@ -18,36 +18,37 @@
 
                         <div class="">
                             <div class="container m-auto space-y-8 px-6">
-                                @foreach ($rents as $rent)
                                 <div class="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                                    <div
-                                        class="py-12 sm:p-12 rounded-3xl bg-white border border-gray-100 bg-opacity-80 shadow-2xl shadow-gray-600/10">
-                                        <div class="space-y-16">
-                                            <div class="space-y-2">
-                                                <h3 class="text-2xl font-semibold text-gray-800 transition">
-                                                    Room Number {{ $rent->rooms->room_number }}
+                                    @foreach ($rents as $rent)
+                                        <div
+                                            class="py-12 sm:p-12 rounded-3xl bg-white border border-gray-100 bg-opacity-80 shadow-2xl shadow-gray-600/10">
+                                            <div class="space-y-16">
+                                                <div class="space-y-2">
+                                                    <h3 class="text-2xl font-semibold text-gray-800 transition">
+                                                        Room Number {{ $rent->rooms->room_number }}
 
-                                                </h3>
-                                                <p class="text-gray-600 text-base">
-                                                    Resident name: {{ $rent->resident_name }}
-                                                </p>
-                                                <p class="text-gray-600 text-base">
-                                                    Reservation name: {{ $rent->users->name }}
-                                                </p>
-                                                <p class="text-gray-600 text-base">
-                                                    Start Date: {{ $rent->date_started }}
-                                                </p>
-                                                <p class="text-gray-600 text-base">
-                                                    End Date: {{ $rent->date_ended }}
-                                                </p>
-                                                <p class="text-gray-600 text-base">
-                                                    Total Price: {{ 'Rp ' . number_format($rent['total_price'], 2, ',','.') }}
-                                                </p>
+                                                    </h3>
+                                                    <p class="text-gray-600 text-base">
+                                                        Resident name: {{ $rent->resident_name }}
+                                                    </p>
+                                                    <p class="text-gray-600 text-base">
+                                                        Reservation name: {{ $rent->users->name }}
+                                                    </p>
+                                                    <p class="text-gray-600 text-base">
+                                                        Start Date: {{ $rent->date_started }}
+                                                    </p>
+                                                    <p class="text-gray-600 text-base">
+                                                        End Date: {{ $rent->date_ended }}
+                                                    </p>
+                                                    <p class="text-gray-600 text-base">
+                                                        Total Price:
+                                                        {{ 'Rp ' . number_format($rent['total_price'], 2, ',', '.') }}
+                                                    </p>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    @endforeach
                                 </div>
-                                @endforeach
                             </div>
                         </div>
                     </div>

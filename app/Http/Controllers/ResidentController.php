@@ -12,9 +12,24 @@ class ResidentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $rent = Rents::with('users')->with('rooms')->paginate(5);
+        $search = $request->search;
+        $filter = $request->filter;
+        if ($search != null) {
+
+            $rent = Rents::where('resident_name', 'LIKE', '%' . $search . '%')
+                ->orWhere('email', 'LIKE', '%' . $search . '%')
+                ->orWhere('total_price', 'LIKE', '%' . $search . '%')
+
+                ->paginate(5);
+        } else if ($filter != null) {
+            $rent = Rents::where('validation', '=', $filter)
+                ->paginate(5);
+        } else {
+
+            $rent = Rents::with('users')->with('rooms')->paginate(5);
+        }
         return view('admin.resident.resident', compact('rent'));
     }
 
@@ -71,14 +86,15 @@ class ResidentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $rent       = Rents::find($id)->with('users')->with('rooms')->get()->first();
+        $rent  = Rents::find($id)->with('users')->with('rooms')->get()->first();
 
-        if($rent->validation == '0') {
-            $rent->validation == '1';
+        if ($rent->validation == 0) {
+            $rent->validation = 1;
+            $rent->save();
         }
 
         //dd($rent);
-        return view('admin.resident.resident', compact('rent', 'users', 'rooms'));
+        return redirect()->back()->with('toast_success', "Successfully validate the rent");
     }
 
     /**

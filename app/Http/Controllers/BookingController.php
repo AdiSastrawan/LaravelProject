@@ -88,20 +88,22 @@ class BookingController extends Controller
 
 
         session()->put('cart', $cart);
-        return redirect()->back()->with('success', 'Packages add to cart successfully!');
+        return redirect()->back()->with('toast_success', 'Packages add to cart successfully!');
     }
 
-    public function remove(Request $request)
+    public function remove($id)
     {
-        dd($request->id);
-        if ($request->id) {
+
+        if ($id) {
             $cart = session()->get('cart');
-            if (isset($cart[$request->id])) {
-                unset($cart[$request->id]);
+            if (isset($cart[$id])) {
+                unset($cart[$id]);
                 session()->put('cart', $cart);
             }
-            session()->flash('success', 'Packages successfully removed!');
+            $room = Room::where('room_id', $id)->get()->first();
+            $room->room_booked = false;
         }
+        return redirect()->back()->with('toast_success', 'Packages deleted from the cart succesfully');
     }
 
     public function update(Request $request)
@@ -121,33 +123,40 @@ class BookingController extends Controller
         return view('client.booking.history', compact('rents'));
     }
 
-    public function success(){
+    public function success()
+    {
         return view('client.booking.success');
     }
-    
+
     public function store()
     {
+
         $cart = session()->get('cart');
+        if ($cart != null) {
 
-        foreach ($cart as $c) {
+            foreach ($cart as $c) {
 
-            $store = new Rents;
-            $store->id = Auth::user()->id;;
-            $store->room_id = $c['room_id'];
-            $store->trash_bank = $c['trash_bank'];
-            $store->laundry = $c['laundry'];
-            $store->total_price = $c['total'];
-            $store->resident_name = $c['resident_name'];
-            $store->resident_gender = $c['resident_gender'];
-            $store->resident_telp = $c['resident_telp'];
-            $store->resident_email = $c['resident_email'];
-            $store->date_started = $c['start_date'];
-            $store->date_ended = $c['end_date'];
-            $store->save();
+                $store = new Rents;
+                $store->id = Auth::user()->id;;
+                $store->room_id = $c['room_id'];
+                $store->trash_bank = $c['trash_bank'];
+                $store->laundry = $c['laundry'];
+                $store->total_price = $c['total'];
+                $store->resident_name = $c['resident_name'];
+                $store->resident_gender = $c['resident_gender'];
+                $store->resident_telp = $c['resident_telp'];
+                $store->resident_email = $c['resident_email'];
+                $store->date_started = $c['start_date'];
+                $store->date_ended = $c['end_date'];
+                $store->save();
 
-            unset($cart[$c['room_id']]);
-            session()->put('cart', $cart);
+                unset($cart[$c['room_id']]);
+                session()->put('cart', $cart);
+            }
+            return view('client.booking.success');
+        } else {
+            alert()->error('Error :(', 'Cart is Empty, Please add cart before checkout');
+            return redirect()->back();
         }
-        return redirect()->back()->with('success', 'Packages add to cart successfully!');
     }
 }

@@ -46,11 +46,11 @@ Route::get('/details/{package_id}', [BookingController::class, 'details'])->name
 Route::get('/cart', [BookingController::class, 'cart'])->name('cart');
 
 Route::post('/add-to-cart', [BookingController::class, 'add'])->name('add-to-cart');
-Route::get('/add-to-cart', [BookingController::class, 'store'])->name('insert-cart');
-Route::delete('remove-from-cart', [BookingController::class, 'remove'])->name('remove-from-cart');
+Route::get('/add-to-cart', [BookingController::class, 'store'])->name('insert-cart')->middleware('auth');
+Route::delete('remove-from-cart/{id}', [BookingController::class, 'remove'])->name('remove-from-cart');
 Route::patch('update-cart', [BookingController::class, 'update'])->name('update-cart');
 Route::get('/history', [BookingController::class, 'history'])->name('history');
-Route::get('/success', [BookingController::class, 'success'])->name('success');
+Route::get('/success', [BookingController::class, 'success'])->name('success')->middleware('auth');
 
 Route::get('/admin', [AdminController::class, 'index'])->name('admin-index')->middleware('auth', 'isadmin');
 
