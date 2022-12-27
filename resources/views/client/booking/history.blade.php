@@ -14,16 +14,15 @@
                             </h2>
                         </div>
                     </div>
-
-                    <a href="#"
-                        class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100">
-                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
-                            Noteworthy
-                            technology acquisitions 2021
-                        </h5>
-                        <p class="font-normal text-gray-700">Here are the biggest enterprise
-                            technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                    </a>
+                    @foreach ($rents as $rent)
+                        <div
+                            class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100">
+                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
+                                {{ $rent->resident_name }}
+                            </h5>
+                            <p class="font-normal text-gray-700">Room-{{ $rent->rooms->room_number }}</p>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </section>

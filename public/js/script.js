@@ -28,4 +28,50 @@ function turnActive() {
 }
 
 //BOOKING DETAILS PAGE
-console.log("Here");
+window.onload = function () {
+    console.log("test");
+    const total = document.getElementById("total");
+    const trash = document.getElementById("trash");
+    const laundry = document.getElementById("laundry");
+    const start = document.getElementById("start_date");
+    const end = document.getElementById("end_date");
+    var totalHarga = total.value;
+
+    const currTotal = totalHarga;
+    const trashHarga = 25000;
+    const laundryHarga = 50000;
+    trash.addEventListener("change", function () {
+        console.log("uwu");
+        if (trash.checked == true) {
+            totalHarga = parseInt(totalHarga) + trashHarga;
+            console.log(totalHarga);
+            total.value = totalHarga;
+        } else {
+            totalHarga = parseInt(totalHarga) - trashHarga;
+            total.value = totalHarga;
+        }
+    });
+    laundry.addEventListener("change", function () {
+        console.log("uwu");
+        if (laundry.checked == true) {
+            totalHarga = parseInt(totalHarga) + laundryHarga;
+            console.log(totalHarga);
+            total.value = totalHarga;
+        } else {
+            totalHarga = parseInt(totalHarga) - laundryHarga;
+            total.value = totalHarga;
+        }
+    });
+    start.addEventListener("change", function () {
+        var endDate = new Date(start.value);
+        endDate.setDate(endDate.getDate() + 30);
+        var futureDate =
+            endDate.getFullYear() +
+            "-" +
+            ("0" + (endDate.getMonth() + 1)).slice(-2) +
+            "-" +
+            ("0" + endDate.getDate()).slice(-2);
+        console.log(futureDate);
+        end.value = futureDate;
+    });
+};
