@@ -20,7 +20,6 @@ class RoomController extends Controller
         $filter = $request->filter;
 
         if ($search != null) {
-
             $room = Room::with('packages')
                 ->where('room_number', 'LIKE', '%' . $search . '%')
                 ->orWhere('max_resident', 'LIKE', '%' . $search . '%')

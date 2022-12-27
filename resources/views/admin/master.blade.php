@@ -80,6 +80,7 @@
                                 <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">id</th>
                                 <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Name</th>
                                 <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Email</th>
+                                <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Phone Number</th>
                             </tr>
                         </thead>
                         <tbody class="text-gray-700">
@@ -89,12 +90,14 @@
                                         <td class="w-1/3 text-left py-3 px-4">{{ $admin->id }}</td>
                                         <td class="w-1/3 text-left py-3 px-4">{{ $admin->name }}</td>
                                         <td class="w-1/3 text-left py-3 px-4">{{ $admin->email }}</td>
+                                        {{-- <td class="w-1/3 text-left py-3 px-4">{{ $admin->phone_number }}</td> --}}
                                     </tr>
                                 @else
                                     <tr class="bg-gray-200">
                                         <td class="w-1/3 text-left py-3 px-4">{{ $admin->id }}</td>
                                         <td class="w-1/3 text-left py-3 px-4">{{ $admin->name }}</td>
                                         <td class="w-1/3 text-left py-3 px-4">{{ $admin->email }}</td>
+                                        {{-- <td class="w-1/3 text-left py-3 px-4">{{ $admin->phone_number }}</td> --}}
                                     </tr>
                                 @endif
                             @endforeach

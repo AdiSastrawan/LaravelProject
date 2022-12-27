@@ -22,6 +22,11 @@
             <i class="fas fa-sticky-note mr-3"></i>
             Facilities
         </a>
+        <a href="{{ route('resident.index') }}"
+            class="flex items-center  text-white hover:opacity-100 py-4 pl-6 nav-item">
+            <i class="fas fa-sticky-note mr-3"></i>
+            Residents
+        </a>
 
     </nav>
 

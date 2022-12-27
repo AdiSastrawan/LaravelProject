@@ -12,10 +12,40 @@ class FacilityController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $facility = Facilities::all();
-        return view('admin.facilities.facility', compact('facility'));
+        $search = $request->search;
+        $filter = $request->filter;
+        $filter1 = $request->filter1;
+        $size = Facilities::select('size')->get();
+        if ($search != null) {
+
+            $facility = Facilities::where('facility_id', 'LIKE', '%' . $search . '%')
+                ->orWhere('size', 'LIKE', '%' . $search . '%')
+
+                ->paginate(5);
+        } else if ($filter != null) {
+            if ($filter == 1) {
+
+                $facility = Facilities::where('bed', '=', 1)->with('packages')
+                    ->paginate(5);
+            } else if ($filter == 2) {
+                $facility = Facilities::where('desk', '=', 1)->with('packages')
+                    ->paginate(5);
+            } else if ($filter == 3) {
+                $facility = Facilities::where('toilet', '=', 1)->with('packages')
+                    ->paginate(5);
+            } else if ($filter == 4) {
+                $facility = Facilities::where('ac', '=', 1)->with('packages')
+                    ->paginate(5);
+            }
+        } else if ($filter1 != null) {
+            $facility = Facilities::where('size', '=', $filter1)->with('packages')
+                ->paginate(5);
+        } else {
+            $facility = Facilities::paginate(5);
+        }
+        return view('admin.facilities.facility', compact('facility', 'size'));
     }
 
     /**

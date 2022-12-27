@@ -3,28 +3,18 @@
     <div class="container mx-auto px-4 sm:px-8">
         <div class="py-8">
             <div>
-                <h2 class="text-2xl font-semibold leading-tight">Facilities</h2>
+                <h2 class="text-2xl font-semibold leading-tight">Residents</h2>
             </div>
             <div class="my-2 flex flex-wrap md:flex-nowrap w-fit  ">
                 <a class="hover:bg-green-800 py-2 px-3 mx-2   rounded-l border block  w-20 border-white text-white leading-tight bg-green-500 rounded-md "
-                    href="{{ route('facility.create') }}">Create</a>
-                <form action="{{ route('facility.index') }}" class="flex" method="get">
+                    href="{{ route('resident.create') }}">Create</a>
+                <form action="{{ route('resident.index') }}" class="flex" method="get">
 
                     <select name="filter"
                         class=" h-full rounded-r border-t sm:rounded-r-none sm:border-r-0 border-r border-b block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500">
-                        <option value="" selected>All Included</option>
-                        <option value="1">Bed Included</option>
-                        <option value="2">Desk Included</option>
-                        <option value="3">Toilet Included</option>
-                        <option value="4">AC Included</option>
-                    </select>
-                    <select name="filter1"
-                        class=" h-full rounded-r border-t sm:rounded-r-none sm:border-r-0 border-r border-b block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500">
-                        <option value="" selected>All Room Size</option>
-                        @foreach ($size as $s)
-                            <option value="{{ $s->size }}">{{ $s->size }}</option>
-                        @endforeach
-
+                        <option value="">All</option>
+                        <option value="1">Booked Room</option>
+                        <option value="0">Unbooked Room</option>
                     </select>
                     <button type="submit"
                         class="flex items-center px-1 w-14 justify-center hover:bg-gray-200 bg-white border border-gray-400">Filter</button>
@@ -53,28 +43,32 @@
                             <tr>
                                 <th
                                     class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                    Facility ID
+                                    User Name
                                 </th>
                                 <th
                                     class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                    Room Size
+                                    Resident Name
                                 </th>
                                 <th
                                     class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                    Bed
+                                    Phone Number
                                 </th>
                                 <th
                                     class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                    Desk
+                                    Room Number
                                 </th>
 
                                 <th
                                     class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                    Toilet
+                                    Additional
                                 </th>
                                 <th
                                     class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                    AC
+                                    Date Started
+                                </th>
+                                <th
+                                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                    Date Ended
                                 </th>
 
                                 <th
@@ -84,18 +78,24 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($facility as $f)
-                                <tr>
-                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                        {{ $f->facility_id }}
-                                    </td>
-                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                        {{ $f->size }}
-                                    </td>
-                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                        @if ($f->bed == 1)
+                            @foreach ($rent as $r)
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                    {{ $r->users['name'] }}
+                                </td>
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                    Adi Sastrawan
+                                </td>
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                    089685756351
+                                </td>
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                    {{ $r->rooms['room_number'] }}
+                                </td>
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm font-semibold">
+                                    <p class="flex">
+                                        @if ($r->laundry == 1)
                                             <svg xmlns="http://www.w3.org/2000/svg"
-                                                xmlns:xlink="http://www.w3.org/1999/xlink" width="20px" height="20px"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" width="15px" height="15px"
                                                 viewBox="0 0 36 36" aria-hidden="true" role="img"
                                                 class="iconify iconify--twemoji" preserveAspectRatio="xMidYMid meet">
                                                 <path fill="#77B255"
@@ -105,18 +105,20 @@
                                             </svg>
                                         @else
                                             <svg xmlns="http://www.w3.org/2000/svg"
-                                                xmlns:xlink="http://www.w3.org/1999/xlink" width="20px" height="20px"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" width="15px" height="15px"
                                                 viewBox="0 0 512 512" aria-hidden="true" role="img"
                                                 class="iconify iconify--fxemoji" preserveAspectRatio="xMidYMid meet">
                                                 <path fill="#FF473E"
                                                     d="M330.443 256l136.765-136.765c14.058-14.058 14.058-36.85 0-50.908l-23.535-23.535c-14.058-14.058-36.85-14.058-50.908 0L256 181.557L119.235 44.792c-14.058-14.058-36.85-14.058-50.908 0L44.792 68.327c-14.058 14.058-14.058 36.85 0 50.908L181.557 256L44.792 392.765c-14.058 14.058-14.058 36.85 0 50.908l23.535 23.535c14.058 14.058 36.85 14.058 50.908 0L256 330.443l136.765 136.765c14.058 14.058 36.85 14.058 50.908 0l23.535-23.535c14.058-14.058 14.058-36.85 0-50.908L330.443 256z" />
                                             </svg>
                                         @endif
-                                    </td>
-                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                        @if ($f->desk == 1)
+                                        Laundry
+                                    </p>
+                                    <p class="flex ">
+
+                                        @if ($r->trash_bank == 1)
                                             <svg xmlns="http://www.w3.org/2000/svg"
-                                                xmlns:xlink="http://www.w3.org/1999/xlink" width="20px" height="20px"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" width="15px" height="15px"
                                                 viewBox="0 0 36 36" aria-hidden="true" role="img"
                                                 class="iconify iconify--twemoji" preserveAspectRatio="xMidYMid meet">
                                                 <path fill="#77B255"
@@ -126,82 +128,42 @@
                                             </svg>
                                         @else
                                             <svg xmlns="http://www.w3.org/2000/svg"
-                                                xmlns:xlink="http://www.w3.org/1999/xlink" width="20px" height="20px"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" width="15px" height="15px"
                                                 viewBox="0 0 512 512" aria-hidden="true" role="img"
                                                 class="iconify iconify--fxemoji" preserveAspectRatio="xMidYMid meet">
                                                 <path fill="#FF473E"
                                                     d="M330.443 256l136.765-136.765c14.058-14.058 14.058-36.85 0-50.908l-23.535-23.535c-14.058-14.058-36.85-14.058-50.908 0L256 181.557L119.235 44.792c-14.058-14.058-36.85-14.058-50.908 0L44.792 68.327c-14.058 14.058-14.058 36.85 0 50.908L181.557 256L44.792 392.765c-14.058 14.058-14.058 36.85 0 50.908l23.535 23.535c14.058 14.058 36.85 14.058 50.908 0L256 330.443l136.765 136.765c14.058 14.058 36.85 14.058 50.908 0l23.535-23.535c14.058-14.058 14.058-36.85 0-50.908L330.443 256z" />
                                             </svg>
                                         @endif
-                                    </td>
-                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                        @if ($f->toilet == 1)
-                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                xmlns:xlink="http://www.w3.org/1999/xlink" width="20px" height="20px"
-                                                viewBox="0 0 36 36" aria-hidden="true" role="img"
-                                                class="iconify iconify--twemoji" preserveAspectRatio="xMidYMid meet">
-                                                <path fill="#77B255"
-                                                    d="M36 32a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v28z" />
-                                                <path fill="#FFF"
-                                                    d="M29.28 6.362a2.502 2.502 0 0 0-3.458.736L14.936 23.877l-5.029-4.65a2.5 2.5 0 1 0-3.394 3.671l7.209 6.666c.48.445 1.09.665 1.696.665c.673 0 1.534-.282 2.099-1.139c.332-.506 12.5-19.27 12.5-19.27a2.5 2.5 0 0 0-.737-3.458z" />
-                                            </svg>
-                                        @else
-                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                xmlns:xlink="http://www.w3.org/1999/xlink" width="20px"
-                                                height="20px" viewBox="0 0 512 512" aria-hidden="true"
-                                                role="img" class="iconify iconify--fxemoji"
-                                                preserveAspectRatio="xMidYMid meet">
-                                                <path fill="#FF473E"
-                                                    d="M330.443 256l136.765-136.765c14.058-14.058 14.058-36.85 0-50.908l-23.535-23.535c-14.058-14.058-36.85-14.058-50.908 0L256 181.557L119.235 44.792c-14.058-14.058-36.85-14.058-50.908 0L44.792 68.327c-14.058 14.058-14.058 36.85 0 50.908L181.557 256L44.792 392.765c-14.058 14.058-14.058 36.85 0 50.908l23.535 23.535c14.058 14.058 36.85 14.058 50.908 0L256 330.443l136.765 136.765c14.058 14.058 36.85 14.058 50.908 0l23.535-23.535c14.058-14.058 14.058-36.85 0-50.908L330.443 256z" />
-                                            </svg>
-                                        @endif
-                                    </td>
-                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                        @if ($f->ac == 1)
-                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                xmlns:xlink="http://www.w3.org/1999/xlink" width="20px"
-                                                height="20px" viewBox="0 0 36 36" aria-hidden="true" role="img"
-                                                class="iconify iconify--twemoji" preserveAspectRatio="xMidYMid meet">
-                                                <path fill="#77B255"
-                                                    d="M36 32a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v28z" />
-                                                <path fill="#FFF"
-                                                    d="M29.28 6.362a2.502 2.502 0 0 0-3.458.736L14.936 23.877l-5.029-4.65a2.5 2.5 0 1 0-3.394 3.671l7.209 6.666c.48.445 1.09.665 1.696.665c.673 0 1.534-.282 2.099-1.139c.332-.506 12.5-19.27 12.5-19.27a2.5 2.5 0 0 0-.737-3.458z" />
-                                            </svg>
-                                        @else
-                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                xmlns:xlink="http://www.w3.org/1999/xlink" width="20px"
-                                                height="20px" viewBox="0 0 512 512" aria-hidden="true"
-                                                role="img" class="iconify iconify--fxemoji"
-                                                preserveAspectRatio="xMidYMid meet">
-                                                <path fill="#FF473E"
-                                                    d="M330.443 256l136.765-136.765c14.058-14.058 14.058-36.85 0-50.908l-23.535-23.535c-14.058-14.058-36.85-14.058-50.908 0L256 181.557L119.235 44.792c-14.058-14.058-36.85-14.058-50.908 0L44.792 68.327c-14.058 14.058-14.058 36.85 0 50.908L181.557 256L44.792 392.765c-14.058 14.058-14.058 36.85 0 50.908l23.535 23.535c14.058 14.058 36.85 14.058 50.908 0L256 330.443l136.765 136.765c14.058 14.058 36.85 14.058 50.908 0l23.535-23.535c14.058-14.058 14.058-36.85 0-50.908L330.443 256z" />
-                                            </svg>
-                                        @endif
-                                    </td>
+                                        Trash Bank
 
-                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                        <div
-                                            class="flex md:flex-nowrap justify-center sm:flex-wrap lg:flex-wrap space-x-2">
+                                    </p>
+                                </td>
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                    {{ $r->date_started }}
+                                </td>
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                    {{ $r->date_ended }}
+                                </td>
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                    <div class="flex md:flex-nowrap justify-center sm:flex-wrap lg:flex-wrap space-x-2">
 
-                                            <a class="hover:bg-blue-800 py-2 px-3 my-2 border-white text-white bg-blue-500 rounded-md "
-                                                href="{{ route('facility.show', ['facility' => $f->facility_id]) }}">detail</a>
-                                            <a class="hover:bg-blue-800 py-2 px-3 my-2 border-white text-white bg-blue-500 rounded-md "
-                                                href="{{ route('facility.edit', ['facility' => $f->facility_id]) }}">edit</a>
-                                            <form
-                                                action="{{ route('facility.destroy', ['facility' => $f->facility_id]) }}"
-                                                class="py-2 my-2" id="delete"method="post">
-                                                @csrf
-                                                @method('delete')
-                                                <a type="" onclick="deleteConfirm()" name="deleteConfirm"
-                                                    class="hover:bg-red-800 py-2 px-3 border-white text-white m-2 bg-red-500 rounded-md cursor-pointer">delete</a>
-                                    </td>
-                                    </form>
-
-                                </tr>
+                                        <a class="hover:bg-blue-800 py-2 px-3 my-2 border-white text-white bg-blue-500 rounded-md "
+                                            href="{{ route('resident.show', ['resident' => $r->rent_id]) }}">detail</a>
+                                        <a class="hover:bg-blue-800 py-2 px-3 my-2 border-white text-white bg-blue-500 rounded-md "
+                                            href="{{ route('resident.edit', ['resident' => $r->rent_id]) }}">edit</a>
+                                        <form action="{{ route('resident.destroy', ['resident' => $r->rent_id]) }}"
+                                            class="py-2 my-2" id="delete"method="post">
+                                            @csrf
+                                            @method('delete')
+                                            <a type="" onclick="deleteConfirm()" name="deleteConfirm"
+                                                class="hover:bg-red-800 py-2 px-3 border-white text-white m-2 bg-red-500 rounded-md cursor-pointer">delete</a>
+                                </td>
+                                </form>
                             @endforeach
                         </tbody>
                     </table>
-                    {{ $facility->links() }}
+
                     {{-- <div
                         class="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between          ">
                         <span class="text-xs xs:text-sm text-gray-900">
