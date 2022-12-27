@@ -146,7 +146,7 @@
                     </a>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <a :href="route('logout')" class="flex px-2"
+                        <a :href="route('logout')" class="flex px-2 cursor-pointer"
                             onclick="event.preventDefault();
                                                     this.closest('form').submit();">
                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3 icon icon-tabler icon-tabler-logout"

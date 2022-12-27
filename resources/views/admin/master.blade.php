@@ -80,7 +80,7 @@
                                 <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">id</th>
                                 <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Name</th>
                                 <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Email</th>
-                                <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Phone Number</th>
+                                {{-- <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Phone Number</th> --}}
                             </tr>
                         </thead>
                         <tbody class="text-gray-700">
