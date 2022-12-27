@@ -121,12 +121,10 @@ class BookingController extends Controller
         return view('client.booking.history', compact('rents'));
     }
 
-    public function index()
-    {
-        $reviews = Review::all();
-        return view('client.booking.details', compact('reviews'));
-        //dd($reviews);
+    public function success(){
+        return view('client.booking.success');
     }
+    
     public function store()
     {
         $cart = session()->get('cart');

@@ -50,6 +50,7 @@ Route::get('/add-to-cart', [BookingController::class, 'store'])->name('insert-ca
 Route::delete('remove-from-cart', [BookingController::class, 'remove'])->name('remove-from-cart');
 Route::patch('update-cart', [BookingController::class, 'update'])->name('update-cart');
 Route::get('/history', [BookingController::class, 'history'])->name('history');
+Route::get('/success', [BookingController::class, 'success'])->name('success');
 
 Route::get('/admin', [AdminController::class, 'index'])->name('admin-index')->middleware('auth', 'isadmin');
 

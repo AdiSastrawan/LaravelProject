@@ -3,7 +3,7 @@
 
     <div class="p-8 rounded border border-gray-200 bg-white">
         <h1 class="font-medium text-3xl">Edit Facility</h1>
-        <form action="{{ route('facility.update', ['facility' => $facility->facility_id]) }}" method="POST"
+        <form action="{{ route('resident.update', ['rent' => $rent->rent_id]) }}" method="POST"
             enctype="multipart/form-data">
             @csrf
             @method('PUT')
