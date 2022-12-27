@@ -45,7 +45,8 @@ Route::get('/packages', [BookingController::class, 'package'])->name('packages')
 Route::get('/details/{package_id}', [BookingController::class, 'details'])->name('details');
 Route::get('/cart', [BookingController::class, 'cart'])->name('cart');
 
-Route::get('add-to-cart/{package_id}', [BookingController::class, 'add'])->name('add-to-cart');
+Route::post('/add-to-cart', [BookingController::class, 'add'])->name('add-to-cart');
+Route::get('/add-to-cart', [BookingController::class, 'store'])->name('insert-cart');
 Route::delete('remove-from-cart', [BookingController::class, 'remove'])->name('remove-from-cart');
 Route::patch('update-cart', [BookingController::class, 'update'])->name('update-cart');
 Route::get('/history', [BookingController::class, 'history'])->name('history');
