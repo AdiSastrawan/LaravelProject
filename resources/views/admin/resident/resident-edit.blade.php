@@ -2,16 +2,18 @@
     <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
 
     <div class="p-8 rounded border border-gray-200 bg-white">
-        <h1 class="font-medium text-3xl">Create Facility</h1>
-        <form action="{{ route('facility.store') }}" method="POST" enctype="multipart/form-data">
+        <h1 class="font-medium text-3xl">Edit Facility</h1>
+        <form action="{{ route('facility.update', ['facility' => $facility->facility_id]) }}" method="POST"
+            enctype="multipart/form-data">
             @csrf
-
+            @method('PUT')
             <div class="mt-8 grid lg:grid-cols-2 gap-4">
                 <div> <label for="size" class="text-sm text-gray-700 block mb-1 font-medium">Size</label>
 
-                    <input type="text" value="" name="size" id="size" maxlength="3"
+                    <input type="text" value="{{ isset($facility) ? $facility->size : old('code') }}" name="size"
+                        id="size" lenght="3"
                         class="bg-gray-100 border border-gray-200 rounded py-1 px-3 block focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full"
-                        placeholder="Number-x-Number" />
+                        placeholder="" />
                     @error('code')
                         <div class="text-xs text-red-800">Warning</div>
                     @enderror
@@ -20,9 +22,13 @@
                     <select
                         class="bg-gray-100 border border-gray-200 rounded py-1 px-3 block focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full"
                         name="bed" id="bed">
-                        <option value="" selected disabled>--Choose--</option>
-                        <option value="1">Included</option>
-                        <option value="0">Not Included</option>
+                        @if ($facility->bed == 1)
+                            <option value="1" selected>Included</option>
+                            <option value="0">Not Included</option>
+                        @else
+                            <option value="1">Included</option>
+                            <option value="0"selected>Not Included</option>
+                        @endif
                     </select>
 
 
@@ -34,9 +40,13 @@
                     <select
                         class="bg-gray-100 border border-gray-200 rounded py-1 px-3 block focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full"
                         name="cupboard" id="cupboard">
-                        <option value="" selected disabled>--Choose--</option>
-                        <option value="1">Included</option>
-                        <option value="0">Not Included</option>
+                        @if ($facility->cupboard == 1)
+                            <option value="1" selected>Included</option>
+                            <option value="0">Not Included</option>
+                        @else
+                            <option value="1">Included</option>
+                            <option value="0"selected>Not Included</option>
+                        @endif
                     </select>
 
 
@@ -48,9 +58,13 @@
                     <select
                         class="bg-gray-100 border border-gray-200 rounded py-1 px-3 block focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full"
                         name="pillow" id="pillow">
-                        <option value="" selected disabled>--Choose--</option>
-                        <option value="1">Included</option>
-                        <option value="0">Not Included</option>
+                        @if ($facility->pillow == 1)
+                            <option value="1" selected>Included</option>
+                            <option value="0">Not Included</option>
+                        @else
+                            <option value="1">Included</option>
+                            <option value="0"selected>Not Included</option>
+                        @endif
                     </select>
 
 
@@ -62,9 +76,13 @@
                     <select
                         class="bg-gray-100 border border-gray-200 rounded py-1 px-3 block focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full"
                         name="mirror" id="mirror">
-                        <option value="" selected disabled>--Choose--</option>
-                        <option value="1">Included</option>
-                        <option value="0">Not Included</option>
+                        @if ($facility->mirror == 1)
+                            <option value="1" selected>Included</option>
+                            <option value="0">Not Included</option>
+                        @else
+                            <option value="1">Included</option>
+                            <option value="0"selected>Not Included</option>
+                        @endif
                     </select>
 
 
@@ -76,9 +94,13 @@
                     <select
                         class="bg-gray-100 border border-gray-200 rounded py-1 px-3 block focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full"
                         name="desk" id="desk">
-                        <option value="" selected disabled>--Choose--</option>
-                        <option value="1">Included</option>
-                        <option value="0">Not Included</option>
+                        @if ($facility->desk == 1)
+                            <option value="1" selected>Included</option>
+                            <option value="0">Not Included</option>
+                        @else
+                            <option value="1">Included</option>
+                            <option value="0"selected>Not Included</option>
+                        @endif
                     </select>
 
 
@@ -90,9 +112,13 @@
                     <select
                         class="bg-gray-100 border border-gray-200 rounded py-1 px-3 block focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full"
                         name="chair" id="chair">
-                        <option value="" selected disabled>--Choose--</option>
-                        <option value="1">Included</option>
-                        <option value="0">Not Included</option>
+                        @if ($facility->chair == 1)
+                            <option value="1" selected>Included</option>
+                            <option value="0">Not Included</option>
+                        @else
+                            <option value="1">Included</option>
+                            <option value="0"selected>Not Included</option>
+                        @endif
                     </select>
 
 
@@ -104,9 +130,13 @@
                     <select
                         class="bg-gray-100 border border-gray-200 rounded py-1 px-3 block focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full"
                         name="window" id="window">
-                        <option value="" selected disabled>--Choose--</option>
-                        <option value="1">Included</option>
-                        <option value="0">Not Included</option>
+                        @if ($facility->window == 1)
+                            <option value="1" selected>Included</option>
+                            <option value="0">Not Included</option>
+                        @else
+                            <option value="1">Included</option>
+                            <option value="0"selected>Not Included</option>
+                        @endif
                     </select>
 
 
@@ -118,9 +148,13 @@
                     <select
                         class="bg-gray-100 border border-gray-200 rounded py-1 px-3 block focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full"
                         name="toilet" id="toilet">
-                        <option value="" selected disabled>--Choose--</option>
-                        <option value="1">Included</option>
-                        <option value="0">Not Included</option>
+                        @if ($facility->toilet == 1)
+                            <option value="1" selected>Included</option>
+                            <option value="0">Not Included</option>
+                        @else
+                            <option value="1">Included</option>
+                            <option value="0"selected>Not Included</option>
+                        @endif
                     </select>
 
 
@@ -132,9 +166,13 @@
                     <select
                         class="bg-gray-100 border border-gray-200 rounded py-1 px-3 block focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full"
                         name="tub" id="tub">
-                        <option value="" selected disabled>--Choose--</option>
-                        <option value="1">Included</option>
-                        <option value="0">Not Included</option>
+                        @if ($facility->tub == 1)
+                            <option value="1" selected>Included</option>
+                            <option value="0">Not Included</option>
+                        @else
+                            <option value="1">Included</option>
+                            <option value="0"selected>Not Included</option>
+                        @endif
                     </select>
 
 
@@ -146,9 +184,13 @@
                     <select
                         class="bg-gray-100 border border-gray-200 rounded py-1 px-3 block focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full"
                         name="shower" id="shower">
-                        <option value="" selected disabled>--Choose--</option>
-                        <option value="1">Included</option>
-                        <option value="0">Not Included</option>
+                        @if ($facility->tub == 1)
+                            <option value="1" selected>Included</option>
+                            <option value="0">Not Included</option>
+                        @else
+                            <option value="1">Included</option>
+                            <option value="0"selected>Not Included</option>
+                        @endif
                     </select>
 
 
@@ -161,9 +203,13 @@
                     <select
                         class="bg-gray-100 border border-gray-200 rounded py-1 px-3 block focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full"
                         name="electricity" id="electricity">
-                        <option value="" selected disabled>--Choose--</option>
-                        <option value="1">Included</option>
-                        <option value="0">Not Included</option>
+                        @if ($facility->electricity == 1)
+                            <option value="1" selected>Included</option>
+                            <option value="0">Not Included</option>
+                        @else
+                            <option value="1">Included</option>
+                            <option value="0"selected>Not Included</option>
+                        @endif
                     </select>
 
 
@@ -175,9 +221,13 @@
                     <select
                         class="bg-gray-100 border border-gray-200 rounded py-1 px-3 block focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full"
                         name="water" id="water">
-                        <option value="" selected disabled>--Choose--</option>
-                        <option value="1">Included</option>
-                        <option value="0">Not Included</option>
+                        @if ($facility->water == 1)
+                            <option value="1" selected>Included</option>
+                            <option value="0">Not Included</option>
+                        @else
+                            <option value="1">Included</option>
+                            <option value="0"selected>Not Included</option>
+                        @endif
                     </select>
 
 
@@ -189,10 +239,13 @@
                     <select
                         class="bg-gray-100 border border-gray-200 rounded py-1 px-3 block focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full"
                         name="ac" id="ac">
-                        <option value="" selected disabled>--Choose--</option>
-                        <option value="1">Included</option>
-                        <option value="0">Not Included</option>
-
+                        @if ($facility->ac == 1)
+                            <option value="1" selected>Included</option>
+                            <option value="0">Not Included</option>
+                        @else
+                            <option value="1">Included</option>
+                            <option value="0"selected>Not Included</option>
+                        @endif
                     </select>
 
 

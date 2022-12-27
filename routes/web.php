@@ -8,6 +8,7 @@ use App\Http\Controllers\PackageController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\FacilityController;
+use App\Http\Controllers\ResidentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -54,6 +55,7 @@ Route::get('/admin', [AdminController::class, 'index'])->name('admin-index')->mi
 Route::resource('package', PackageController::class)->middleware('auth', 'isadmin');
 Route::resource('room', RoomController::class)->middleware('auth', 'isadmin');
 Route::resource('facility', FacilityController::class)->middleware('auth', 'isadmin');
+Route::resource('resident', ResidentController::class)->middleware('auth', 'isadmin');
 
 
 

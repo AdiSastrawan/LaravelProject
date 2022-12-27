@@ -2,16 +2,16 @@
     <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
 
     <div class="p-8 rounded border border-gray-200 bg-white">
-        <h1 class="font-medium text-3xl">Create Facility</h1>
+        <h1 class="font-medium text-3xl">Edit Facility</h1>
         <form action="{{ route('facility.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
 
             <div class="mt-8 grid lg:grid-cols-2 gap-4">
                 <div> <label for="size" class="text-sm text-gray-700 block mb-1 font-medium">Size</label>
 
-                    <input type="text" value="" name="size" id="size" maxlength="3"
+                    <input type="text" value="" name="size" id="size" lenght="3"
                         class="bg-gray-100 border border-gray-200 rounded py-1 px-3 block focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full"
-                        placeholder="Number-x-Number" />
+                        placeholder="" />
                     @error('code')
                         <div class="text-xs text-red-800">Warning</div>
                     @enderror
