@@ -8,16 +8,17 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('Laravel', 'kos.kita | Your Minimalist Kost') }}</title>
-    
+
     <!--FONTS-->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    
+
     <!--ICON-->
     <link rel="shortcut icon" href="img/logo.png">
 
     <!--SCRIPTS-->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <script src="js/script.js" async></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/js/script.js" async></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
@@ -27,7 +28,9 @@
 
     <!--CONTENT SECTION-->
     <main>
-        {{$slot}}
+        {{ $slot }}
     </main>
+    @include('sweetalert::alert')
 </body>
+
 </html>

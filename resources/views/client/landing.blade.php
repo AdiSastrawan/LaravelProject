@@ -172,30 +172,30 @@
             <div class="py-16">
                 <div class="xl:container mx-auto px-6 md:px-12">
                     <div class="grid gap-10 px-4 sm:px-0 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                        @foreach ($packages as $key=>$item)
-                        <div class="group relative rounded-2xl  space-y-6 overflow-hidden">
-                            <img class="mx-auto h-[24rem] w-full grayscale object-cover object-top ransition duration-500 group-hover:scale-105 group-hover:grayscale-0"
-                                src="{{ asset('img/' . $item->feature_img) }}" alt="packages" loading="lazy"
-                                width="1000" height="805" />
-                            <div
-                                class="absolute bottom-0 inset-x-0 h-max mt-auto px-8 py-6 bg-gray-800 dark:bg-white translate-y-24 transition duration-300 ease-in-out group-hover:translate-y-0">
-                                <div>
-                                    <h4 class="text-xl font-semibold dark:text-gray-700 text-white pb-2">
-                                        {{$item->package_name}}</h4>
-                                    <span class="block text-sm text-gray-500">{{"Rp " .
-                                        number_format($item->prices['monthly_price'],2,',','.');}}/month</span>
-                                </div>
-                                <p class="mt-8 text-gray-300 dark:text-gray-600">
-                                    {{$item->package_desc}}
-                                </p>
-                                <div class="pt-1 text-right">
-                                    <a href="{{ url('details') }}"
-                                        class="bg-white px-3 py-1 rounded-xl border border-gray-300 text-sm font-medium text-gray-600 transition duration-300 hover:bg-slate-200">
-                                        Details
-                                    </a>
+                        @foreach ($packages as $key => $item)
+                            <div class="group relative rounded-2xl  space-y-6 overflow-hidden">
+                                <img class="mx-auto h-[24rem] w-full grayscale object-cover object-top ransition duration-500 group-hover:scale-105 group-hover:grayscale-0"
+                                    src="{{ asset('img/' . $item->feature_img) }}" alt="packages" loading="lazy"
+                                    width="1000" height="805" />
+                                <div
+                                    class="absolute bottom-0 inset-x-0 h-max mt-auto px-8 py-6 bg-gray-800 dark:bg-white translate-y-24 transition duration-300 ease-in-out group-hover:translate-y-0">
+                                    <div>
+                                        <h4 class="text-xl font-semibold dark:text-gray-700 text-white pb-2">
+                                            {{ $item->package_name }}</h4>
+                                        <span
+                                            class="block text-sm text-gray-500">{{ 'Rp ' . number_format($item->prices['monthly_price'], 2, ',', '.') }}/month</span>
+                                    </div>
+                                    <p class="mt-8 text-gray-300 dark:text-gray-600">
+                                        {{ $item->package_desc }}
+                                    </p>
+                                    <div class="pt-1 text-right">
+                                        <a href="{{ route('details', ['package_id' => $item->package_id]) }}"
+                                            class="bg-white px-3 py-1 rounded-xl border border-gray-300 text-sm font-medium text-gray-600 transition duration-300 hover:bg-slate-200">
+                                            Details
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         @endforeach
                     </div>
 
