@@ -37,6 +37,7 @@ class BookingController extends Controller
         $item = Package::where('package_id', $package_id)->get()->first();
         $reviews=Review::all();
         
+        //dd($item);
         return view('client.booking.details', ['package' => $item], compact('reviews')); 
     }
 

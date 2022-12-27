@@ -53,7 +53,7 @@
                         {{ $package['package_name'] }}
                     </h2>
                     <p class="font-medium text-md text-slate-800 md:text-lg">
-                        In this {{ $package['package_name'] }} you will get the following facilities and services
+                        In {{ $package['package_name'] }} you will get the following facilities and services
                         which will be explained at the bottom
                     </p>
                 </div>
@@ -69,22 +69,22 @@
                             <!--IMAGES GRID-->
                             <div
                                 class="col-span-4 row-span-4 md:col-span-8 lg:col-span-6 md:h-[25rem] lg:h-[31rem] px-2 py-6">
-                                <img src="img/1466.jpg" class="h-full w-full rounded-xl object-cover">
+                                <img src="{{ asset('img') }}/{{ $package->feature_img }}" class="h-full w-full rounded-xl object-cover">
                             </div>
                             <div class="col-span-4 row-span-2 lg:col-span-3 lg:h-60 p-2 pt-6 rounded-bl-xl">
-                                <img src="img/1466.jpg" class="h-full w-full rounded-xl object-cover">
+                                <img src="{{ asset('img') }}/{{ $package->feature_img }}" class="h-full w-full rounded-xl object-cover">
                             </div>
                             <div
                                 class="col-span-4 row-span-2 lg:col-span-3 lg:h-60 p-2 pt-6 md:pt-2 lg:pt-6 rounded-bl-xl md:rounded-tl-xl">
-                                <img src="img/1466.jpg" class="h-full w-full rounded-xl object-cover">
+                                <img src="{{ asset('img') }}/{{ $package->feature_img }}" class="h-full w-full rounded-xl object-cover">
                             </div>
                             <div
                                 class="col-span-5 row-span-2 md:col-span-7 lg:col-span-4 lg:h-60 p-2 pb-6 rounded-tl-xl">
-                                <img src="img/1466.jpg" class="h-full w-full rounded-xl object-cover">
+                                <img src="{{ asset('img') }}/{{ $package->feature_img }}" class="h-full w-full rounded-xl object-cover">
                             </div>
                             <div
                                 class="col-span-3 row-span-2 md:col-span-5 lg:col-span-2 lg:h-60 p-2 pb-6 rounded-tl-xl">
-                                <img src="/img/1466.jpg" class="h-full w-full rounded-xl object-cover">
+                                <img src="{{ asset('img') }}/{{ $package->feature_img }}" class="h-full w-full rounded-xl object-cover">
                             </div>
                         </div>
                     </div>
@@ -99,10 +99,7 @@
                             Spesifikasi Tipe Kamar
                         </h3>
                         <p class="pb-2 pl-2 font-medium text-md text-slate-800 md:text-lg">
-                            Lorem ipsum dolor sit amet
-                        </p>
-                        <p class="pb-2 pl-2 font-medium text-md text-slate-800 md:text-lg">
-                            Lorem ipsum dolor sit amet
+                            Size {{$package->facilities->size}}
                         </p>
                     </div>
 
@@ -110,24 +107,461 @@
                         <h3 class="font-semibold text-lg text-primary mb-2">
                             Fasilitas Kamar
                         </h3>
-                        <p class="pb-2 pl-2 font-medium text-md text-slate-800 md:text-lg">
-                            Lorem ipsum dolor sit amet
-                        </p>
-                        <p class="pb-2 pl-2 font-medium text-md text-slate-800 md:text-lg">
-                            Lorem ipsum dolor sit amet
-                        </p>
+                        @if ($package->facilities->bed == 1)
+                        <ul class="py-1">
+                            <li class="list-none">
+                                <div class="block pb-2 pl-2 font-medium text-md text-slate-800 md:text-lg">
+                                    <div class="inline-flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="20px" height="20px"
+                                            viewBox="0 0 36 36" aria-hidden="true" role="img"
+                                            class="iconify iconify--twemoji" preserveAspectRatio="xMidYMid meet">
+                                            <path fill="#77B255"
+                                                d="M36 32a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v28z" />
+                                            <path fill="#FFF"
+                                                d="M29.28 6.362a2.502 2.502 0 0 0-3.458.736L14.936 23.877l-5.029-4.65a2.5 2.5 0 1 0-3.394 3.671l7.209 6.666c.48.445 1.09.665 1.696.665c.673 0 1.534-.282 2.099-1.139c.332-.506 12.5-19.27 12.5-19.27a2.5 2.5 0 0 0-.737-3.458z" />
+                                        </svg> 
+                                        <div class="pl-4">
+                                            Bed
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        @else
+                            <li class="list-none">
+                                <div class="block pb-2 pl-2 font-medium text-md text-slate-800 md:text-lg">
+                                    <div class="inline-flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" width="20px"
+                                                height="20px" viewBox="0 0 512 512" aria-hidden="true"
+                                                role="img" class="iconify iconify--fxemoji"
+                                                preserveAspectRatio="xMidYMid meet">
+                                                <path fill="#FF473E"
+                                                    d="M330.443 256l136.765-136.765c14.058-14.058 14.058-36.85 0-50.908l-23.535-23.535c-14.058-14.058-36.85-14.058-50.908 0L256 181.557L119.235 44.792c-14.058-14.058-36.85-14.058-50.908 0L44.792 68.327c-14.058 14.058-14.058 36.85 0 50.908L181.557 256L44.792 392.765c-14.058 14.058-14.058 36.85 0 50.908l23.535 23.535c14.058 14.058 36.85 14.058 50.908 0L256 330.443l136.765 136.765c14.058 14.058 36.85 14.058 50.908 0l23.535-23.535c14.058-14.058 14.058-36.85 0-50.908L330.443 256z" />
+                                        </svg>
+                                        <div class="pl-4">
+                                            Bed
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        @endif
+                        </ul>
+
+                        @if ($package->facilities->pillow == 1)
+                        <ul class="py-1">
+                            <li class="list-none">
+                                <div class="block pb-2 pl-2 font-medium text-md text-slate-800 md:text-lg">
+                                    <div class="inline-flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="20px" height="20px"
+                                            viewBox="0 0 36 36" aria-hidden="true" role="img"
+                                            class="iconify iconify--twemoji" preserveAspectRatio="xMidYMid meet">
+                                            <path fill="#77B255"
+                                                d="M36 32a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v28z" />
+                                            <path fill="#FFF"
+                                                d="M29.28 6.362a2.502 2.502 0 0 0-3.458.736L14.936 23.877l-5.029-4.65a2.5 2.5 0 1 0-3.394 3.671l7.209 6.666c.48.445 1.09.665 1.696.665c.673 0 1.534-.282 2.099-1.139c.332-.506 12.5-19.27 12.5-19.27a2.5 2.5 0 0 0-.737-3.458z" />
+                                        </svg> 
+                                        <div class="pl-4">
+                                            Pillow
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        @else
+                            <li class="list-none">
+                                <div class="block pb-2 pl-2 font-medium text-md text-slate-800 md:text-lg">
+                                    <div class="inline-flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" width="20px"
+                                                height="20px" viewBox="0 0 512 512" aria-hidden="true"
+                                                role="img" class="iconify iconify--fxemoji"
+                                                preserveAspectRatio="xMidYMid meet">
+                                                <path fill="#FF473E"
+                                                    d="M330.443 256l136.765-136.765c14.058-14.058 14.058-36.85 0-50.908l-23.535-23.535c-14.058-14.058-36.85-14.058-50.908 0L256 181.557L119.235 44.792c-14.058-14.058-36.85-14.058-50.908 0L44.792 68.327c-14.058 14.058-14.058 36.85 0 50.908L181.557 256L44.792 392.765c-14.058 14.058-14.058 36.85 0 50.908l23.535 23.535c14.058 14.058 36.85 14.058 50.908 0L256 330.443l136.765 136.765c14.058 14.058 36.85 14.058 50.908 0l23.535-23.535c14.058-14.058 14.058-36.85 0-50.908L330.443 256z" />
+                                        </svg>
+                                        <div class="pl-4">
+                                            Pillow
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        @endif
+                        </ul>
+
+                        @if ($package->facilities->desk == 1)
+                        <ul class="py-1">
+                            <li class="list-none">
+                                <div class="block pb-2 pl-2 font-medium text-md text-slate-800 md:text-lg">
+                                    <div class="inline-flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="20px" height="20px"
+                                            viewBox="0 0 36 36" aria-hidden="true" role="img"
+                                            class="iconify iconify--twemoji" preserveAspectRatio="xMidYMid meet">
+                                            <path fill="#77B255"
+                                                d="M36 32a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v28z" />
+                                            <path fill="#FFF"
+                                                d="M29.28 6.362a2.502 2.502 0 0 0-3.458.736L14.936 23.877l-5.029-4.65a2.5 2.5 0 1 0-3.394 3.671l7.209 6.666c.48.445 1.09.665 1.696.665c.673 0 1.534-.282 2.099-1.139c.332-.506 12.5-19.27 12.5-19.27a2.5 2.5 0 0 0-.737-3.458z" />
+                                        </svg> 
+                                        <div class="pl-4">
+                                            Desk
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        @else
+                            <li class="list-none">
+                                <div class="block pb-2 pl-2 font-medium text-md text-slate-800 md:text-lg">
+                                    <div class="inline-flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" width="20px"
+                                                height="20px" viewBox="0 0 512 512" aria-hidden="true"
+                                                role="img" class="iconify iconify--fxemoji"
+                                                preserveAspectRatio="xMidYMid meet">
+                                                <path fill="#FF473E"
+                                                    d="M330.443 256l136.765-136.765c14.058-14.058 14.058-36.85 0-50.908l-23.535-23.535c-14.058-14.058-36.85-14.058-50.908 0L256 181.557L119.235 44.792c-14.058-14.058-36.85-14.058-50.908 0L44.792 68.327c-14.058 14.058-14.058 36.85 0 50.908L181.557 256L44.792 392.765c-14.058 14.058-14.058 36.85 0 50.908l23.535 23.535c14.058 14.058 36.85 14.058 50.908 0L256 330.443l136.765 136.765c14.058 14.058 36.85 14.058 50.908 0l23.535-23.535c14.058-14.058 14.058-36.85 0-50.908L330.443 256z" />
+                                        </svg>
+                                        <div class="pl-4">
+                                            Desk
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        @endif
+                        </ul>
+
+                        @if ($package->facilities->chair == 1)
+                        <ul class="py-1">
+                            <li class="list-none">
+                                <div class="block pb-2 pl-2 font-medium text-md text-slate-800 md:text-lg">
+                                    <div class="inline-flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="20px" height="20px"
+                                            viewBox="0 0 36 36" aria-hidden="true" role="img"
+                                            class="iconify iconify--twemoji" preserveAspectRatio="xMidYMid meet">
+                                            <path fill="#77B255"
+                                                d="M36 32a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v28z" />
+                                            <path fill="#FFF"
+                                                d="M29.28 6.362a2.502 2.502 0 0 0-3.458.736L14.936 23.877l-5.029-4.65a2.5 2.5 0 1 0-3.394 3.671l7.209 6.666c.48.445 1.09.665 1.696.665c.673 0 1.534-.282 2.099-1.139c.332-.506 12.5-19.27 12.5-19.27a2.5 2.5 0 0 0-.737-3.458z" />
+                                        </svg> 
+                                        <div class="pl-4">
+                                            Chair
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        @else
+                            <li class="list-none">
+                                <div class="block pb-2 pl-2 font-medium text-md text-slate-800 md:text-lg">
+                                    <div class="inline-flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" width="20px"
+                                                height="20px" viewBox="0 0 512 512" aria-hidden="true"
+                                                role="img" class="iconify iconify--fxemoji"
+                                                preserveAspectRatio="xMidYMid meet">
+                                                <path fill="#FF473E"
+                                                    d="M330.443 256l136.765-136.765c14.058-14.058 14.058-36.85 0-50.908l-23.535-23.535c-14.058-14.058-36.85-14.058-50.908 0L256 181.557L119.235 44.792c-14.058-14.058-36.85-14.058-50.908 0L44.792 68.327c-14.058 14.058-14.058 36.85 0 50.908L181.557 256L44.792 392.765c-14.058 14.058-14.058 36.85 0 50.908l23.535 23.535c14.058 14.058 36.85 14.058 50.908 0L256 330.443l136.765 136.765c14.058 14.058 36.85 14.058 50.908 0l23.535-23.535c14.058-14.058 14.058-36.85 0-50.908L330.443 256z" />
+                                        </svg>
+                                        <div class="pl-4">
+                                            Chair
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        @endif
+                        </ul>
+
+                        @if ($package->facilities->cupboard == 1)
+                        <ul class="py-1">
+                            <li class="list-none">
+                                <div class="block pb-2 pl-2 font-medium text-md text-slate-800 md:text-lg">
+                                    <div class="inline-flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="20px" height="20px"
+                                            viewBox="0 0 36 36" aria-hidden="true" role="img"
+                                            class="iconify iconify--twemoji" preserveAspectRatio="xMidYMid meet">
+                                            <path fill="#77B255"
+                                                d="M36 32a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v28z" />
+                                            <path fill="#FFF"
+                                                d="M29.28 6.362a2.502 2.502 0 0 0-3.458.736L14.936 23.877l-5.029-4.65a2.5 2.5 0 1 0-3.394 3.671l7.209 6.666c.48.445 1.09.665 1.696.665c.673 0 1.534-.282 2.099-1.139c.332-.506 12.5-19.27 12.5-19.27a2.5 2.5 0 0 0-.737-3.458z" />
+                                        </svg> 
+                                        <div class="pl-4">
+                                            Cupboard
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        @else
+                            <li class="list-none">
+                                <div class="block pb-2 pl-2 font-medium text-md text-slate-800 md:text-lg">
+                                    <div class="inline-flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" width="20px"
+                                                height="20px" viewBox="0 0 512 512" aria-hidden="true"
+                                                role="img" class="iconify iconify--fxemoji"
+                                                preserveAspectRatio="xMidYMid meet">
+                                                <path fill="#FF473E"
+                                                    d="M330.443 256l136.765-136.765c14.058-14.058 14.058-36.85 0-50.908l-23.535-23.535c-14.058-14.058-36.85-14.058-50.908 0L256 181.557L119.235 44.792c-14.058-14.058-36.85-14.058-50.908 0L44.792 68.327c-14.058 14.058-14.058 36.85 0 50.908L181.557 256L44.792 392.765c-14.058 14.058-14.058 36.85 0 50.908l23.535 23.535c14.058 14.058 36.85 14.058 50.908 0L256 330.443l136.765 136.765c14.058 14.058 36.85 14.058 50.908 0l23.535-23.535c14.058-14.058 14.058-36.85 0-50.908L330.443 256z" />
+                                        </svg>
+                                        <div class="pl-4">
+                                            Cupboard
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        @endif
+                        </ul>
+
+                        @if ($package->facilities->mirror == 1)
+                        <ul class="py-1">
+                            <li class="list-none">
+                                <div class="block pb-2 pl-2 font-medium text-md text-slate-800 md:text-lg">
+                                    <div class="inline-flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="20px" height="20px"
+                                            viewBox="0 0 36 36" aria-hidden="true" role="img"
+                                            class="iconify iconify--twemoji" preserveAspectRatio="xMidYMid meet">
+                                            <path fill="#77B255"
+                                                d="M36 32a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v28z" />
+                                            <path fill="#FFF"
+                                                d="M29.28 6.362a2.502 2.502 0 0 0-3.458.736L14.936 23.877l-5.029-4.65a2.5 2.5 0 1 0-3.394 3.671l7.209 6.666c.48.445 1.09.665 1.696.665c.673 0 1.534-.282 2.099-1.139c.332-.506 12.5-19.27 12.5-19.27a2.5 2.5 0 0 0-.737-3.458z" />
+                                        </svg> 
+                                        <div class="pl-4">
+                                            Mirror
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        @else
+                            <li class="list-none">
+                                <div class="block pb-2 pl-2 font-medium text-md text-slate-800 md:text-lg">
+                                    <div class="inline-flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" width="20px"
+                                                height="20px" viewBox="0 0 512 512" aria-hidden="true"
+                                                role="img" class="iconify iconify--fxemoji"
+                                                preserveAspectRatio="xMidYMid meet">
+                                                <path fill="#FF473E"
+                                                    d="M330.443 256l136.765-136.765c14.058-14.058 14.058-36.85 0-50.908l-23.535-23.535c-14.058-14.058-36.85-14.058-50.908 0L256 181.557L119.235 44.792c-14.058-14.058-36.85-14.058-50.908 0L44.792 68.327c-14.058 14.058-14.058 36.85 0 50.908L181.557 256L44.792 392.765c-14.058 14.058-14.058 36.85 0 50.908l23.535 23.535c14.058 14.058 36.85 14.058 50.908 0L256 330.443l136.765 136.765c14.058 14.058 36.85 14.058 50.908 0l23.535-23.535c14.058-14.058 14.058-36.85 0-50.908L330.443 256z" />
+                                        </svg>
+                                        <div class="pl-4">
+                                            Mirror
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        @endif
+                        </ul>
+
+                        @if ($package->facilities->window == 1)
+                        <ul class="py-1">
+                            <li class="list-none">
+                                <div class="block pb-2 pl-2 font-medium text-md text-slate-800 md:text-lg">
+                                    <div class="inline-flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="20px" height="20px"
+                                            viewBox="0 0 36 36" aria-hidden="true" role="img"
+                                            class="iconify iconify--twemoji" preserveAspectRatio="xMidYMid meet">
+                                            <path fill="#77B255"
+                                                d="M36 32a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v28z" />
+                                            <path fill="#FFF"
+                                                d="M29.28 6.362a2.502 2.502 0 0 0-3.458.736L14.936 23.877l-5.029-4.65a2.5 2.5 0 1 0-3.394 3.671l7.209 6.666c.48.445 1.09.665 1.696.665c.673 0 1.534-.282 2.099-1.139c.332-.506 12.5-19.27 12.5-19.27a2.5 2.5 0 0 0-.737-3.458z" />
+                                        </svg> 
+                                        <div class="pl-4">
+                                            Window
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        @else
+                            <li class="list-none">
+                                <div class="block pb-2 pl-2 font-medium text-md text-slate-800 md:text-lg">
+                                    <div class="inline-flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" width="20px"
+                                                height="20px" viewBox="0 0 512 512" aria-hidden="true"
+                                                role="img" class="iconify iconify--fxemoji"
+                                                preserveAspectRatio="xMidYMid meet">
+                                                <path fill="#FF473E"
+                                                    d="M330.443 256l136.765-136.765c14.058-14.058 14.058-36.85 0-50.908l-23.535-23.535c-14.058-14.058-36.85-14.058-50.908 0L256 181.557L119.235 44.792c-14.058-14.058-36.85-14.058-50.908 0L44.792 68.327c-14.058 14.058-14.058 36.85 0 50.908L181.557 256L44.792 392.765c-14.058 14.058-14.058 36.85 0 50.908l23.535 23.535c14.058 14.058 36.85 14.058 50.908 0L256 330.443l136.765 136.765c14.058 14.058 36.85 14.058 50.908 0l23.535-23.535c14.058-14.058 14.058-36.85 0-50.908L330.443 256z" />
+                                        </svg>
+                                        <div class="pl-4">
+                                            Window
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        @endif
+                        </ul>
+
+                        @if ($package->facilities->ac == 1)
+                        <ul class="py-1">
+                            <li class="list-none">
+                                <div class="block pb-2 pl-2 font-medium text-md text-slate-800 md:text-lg">
+                                    <div class="inline-flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="20px" height="20px"
+                                            viewBox="0 0 36 36" aria-hidden="true" role="img"
+                                            class="iconify iconify--twemoji" preserveAspectRatio="xMidYMid meet">
+                                            <path fill="#77B255"
+                                                d="M36 32a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v28z" />
+                                            <path fill="#FFF"
+                                                d="M29.28 6.362a2.502 2.502 0 0 0-3.458.736L14.936 23.877l-5.029-4.65a2.5 2.5 0 1 0-3.394 3.671l7.209 6.666c.48.445 1.09.665 1.696.665c.673 0 1.534-.282 2.099-1.139c.332-.506 12.5-19.27 12.5-19.27a2.5 2.5 0 0 0-.737-3.458z" />
+                                        </svg> 
+                                        <div class="pl-4">
+                                            AC
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        @else
+                            <li class="list-none">
+                                <div class="block pb-2 pl-2 font-medium text-md text-slate-800 md:text-lg">
+                                    <div class="inline-flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" width="20px"
+                                                height="20px" viewBox="0 0 512 512" aria-hidden="true"
+                                                role="img" class="iconify iconify--fxemoji"
+                                                preserveAspectRatio="xMidYMid meet">
+                                                <path fill="#FF473E"
+                                                    d="M330.443 256l136.765-136.765c14.058-14.058 14.058-36.85 0-50.908l-23.535-23.535c-14.058-14.058-36.85-14.058-50.908 0L256 181.557L119.235 44.792c-14.058-14.058-36.85-14.058-50.908 0L44.792 68.327c-14.058 14.058-14.058 36.85 0 50.908L181.557 256L44.792 392.765c-14.058 14.058-14.058 36.85 0 50.908l23.535 23.535c14.058 14.058 36.85 14.058 50.908 0L256 330.443l136.765 136.765c14.058 14.058 36.85 14.058 50.908 0l23.535-23.535c14.058-14.058 14.058-36.85 0-50.908L330.443 256z" />
+                                        </svg>
+                                        <div class="pl-4">
+                                            AC
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        @endif
+                        </ul>
                     </div>
 
                     <div class=" p-3">
                         <h3 class="font-semibold text-lg text-primary mb-2">
                             Fasilitas Kamar Mandi
                         </h3>
-                        <p class="pb-2 pl-2 font-medium text-md text-slate-800 md:text-lg">
-                            Lorem ipsum dolor sit amet
-                        </p>
-                        <p class="pb-2 pl-2 font-medium text-md text-slate-800 md:text-lg">
-                            Lorem ipsum dolor sit amet
-                        </p>
+                        @if ($package->facilities->toilet == 1)
+                        <ul class="py-1">
+                            <li class="list-none">
+                                <div class="block pb-2 pl-2 font-medium text-md text-slate-800 md:text-lg">
+                                    <div class="inline-flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="20px" height="20px"
+                                            viewBox="0 0 36 36" aria-hidden="true" role="img"
+                                            class="iconify iconify--twemoji" preserveAspectRatio="xMidYMid meet">
+                                            <path fill="#77B255"
+                                                d="M36 32a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v28z" />
+                                            <path fill="#FFF"
+                                                d="M29.28 6.362a2.502 2.502 0 0 0-3.458.736L14.936 23.877l-5.029-4.65a2.5 2.5 0 1 0-3.394 3.671l7.209 6.666c.48.445 1.09.665 1.696.665c.673 0 1.534-.282 2.099-1.139c.332-.506 12.5-19.27 12.5-19.27a2.5 2.5 0 0 0-.737-3.458z" />
+                                        </svg> 
+                                        <div class="pl-4">
+                                            Toilet
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        @else
+                            <li class="list-none">
+                                <div class="block pb-2 pl-2 font-medium text-md text-slate-800 md:text-lg">
+                                    <div class="inline-flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" width="20px"
+                                                height="20px" viewBox="0 0 512 512" aria-hidden="true"
+                                                role="img" class="iconify iconify--fxemoji"
+                                                preserveAspectRatio="xMidYMid meet">
+                                                <path fill="#FF473E"
+                                                    d="M330.443 256l136.765-136.765c14.058-14.058 14.058-36.85 0-50.908l-23.535-23.535c-14.058-14.058-36.85-14.058-50.908 0L256 181.557L119.235 44.792c-14.058-14.058-36.85-14.058-50.908 0L44.792 68.327c-14.058 14.058-14.058 36.85 0 50.908L181.557 256L44.792 392.765c-14.058 14.058-14.058 36.85 0 50.908l23.535 23.535c14.058 14.058 36.85 14.058 50.908 0L256 330.443l136.765 136.765c14.058 14.058 36.85 14.058 50.908 0l23.535-23.535c14.058-14.058 14.058-36.85 0-50.908L330.443 256z" />
+                                        </svg>
+                                        <div class="pl-4">
+                                            Toilet
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        @endif
+                        </ul>
+
+                        @if ($package->facilities->tub == 1)
+                        <ul class="py-1">
+                            <li class="list-none">
+                                <div class="block pb-2 pl-2 font-medium text-md text-slate-800 md:text-lg">
+                                    <div class="inline-flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="20px" height="20px"
+                                            viewBox="0 0 36 36" aria-hidden="true" role="img"
+                                            class="iconify iconify--twemoji" preserveAspectRatio="xMidYMid meet">
+                                            <path fill="#77B255"
+                                                d="M36 32a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v28z" />
+                                            <path fill="#FFF"
+                                                d="M29.28 6.362a2.502 2.502 0 0 0-3.458.736L14.936 23.877l-5.029-4.65a2.5 2.5 0 1 0-3.394 3.671l7.209 6.666c.48.445 1.09.665 1.696.665c.673 0 1.534-.282 2.099-1.139c.332-.506 12.5-19.27 12.5-19.27a2.5 2.5 0 0 0-.737-3.458z" />
+                                        </svg> 
+                                        <div class="pl-4">
+                                            Tub
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        @else
+                            <li class="list-none">
+                                <div class="block pb-2 pl-2 font-medium text-md text-slate-800 md:text-lg">
+                                    <div class="inline-flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" width="20px"
+                                                height="20px" viewBox="0 0 512 512" aria-hidden="true"
+                                                role="img" class="iconify iconify--fxemoji"
+                                                preserveAspectRatio="xMidYMid meet">
+                                                <path fill="#FF473E"
+                                                    d="M330.443 256l136.765-136.765c14.058-14.058 14.058-36.85 0-50.908l-23.535-23.535c-14.058-14.058-36.85-14.058-50.908 0L256 181.557L119.235 44.792c-14.058-14.058-36.85-14.058-50.908 0L44.792 68.327c-14.058 14.058-14.058 36.85 0 50.908L181.557 256L44.792 392.765c-14.058 14.058-14.058 36.85 0 50.908l23.535 23.535c14.058 14.058 36.85 14.058 50.908 0L256 330.443l136.765 136.765c14.058 14.058 36.85 14.058 50.908 0l23.535-23.535c14.058-14.058 14.058-36.85 0-50.908L330.443 256z" />
+                                        </svg>
+                                        <div class="pl-4">
+                                            Tub
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        @endif
+                        </ul>
+
+                        @if ($package->facilities->shower == 1)
+                        <ul class="py-1">
+                            <li class="list-none">
+                                <div class="block pb-2 pl-2 font-medium text-md text-slate-800 md:text-lg">
+                                    <div class="inline-flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="20px" height="20px"
+                                            viewBox="0 0 36 36" aria-hidden="true" role="img"
+                                            class="iconify iconify--twemoji" preserveAspectRatio="xMidYMid meet">
+                                            <path fill="#77B255"
+                                                d="M36 32a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v28z" />
+                                            <path fill="#FFF"
+                                                d="M29.28 6.362a2.502 2.502 0 0 0-3.458.736L14.936 23.877l-5.029-4.65a2.5 2.5 0 1 0-3.394 3.671l7.209 6.666c.48.445 1.09.665 1.696.665c.673 0 1.534-.282 2.099-1.139c.332-.506 12.5-19.27 12.5-19.27a2.5 2.5 0 0 0-.737-3.458z" />
+                                        </svg> 
+                                        <div class="pl-4">
+                                            Shower
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        @else
+                            <li class="list-none">
+                                <div class="block pb-2 pl-2 font-medium text-md text-slate-800 md:text-lg">
+                                    <div class="inline-flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" width="20px"
+                                                height="20px" viewBox="0 0 512 512" aria-hidden="true"
+                                                role="img" class="iconify iconify--fxemoji"
+                                                preserveAspectRatio="xMidYMid meet">
+                                                <path fill="#FF473E"
+                                                    d="M330.443 256l136.765-136.765c14.058-14.058 14.058-36.85 0-50.908l-23.535-23.535c-14.058-14.058-36.85-14.058-50.908 0L256 181.557L119.235 44.792c-14.058-14.058-36.85-14.058-50.908 0L44.792 68.327c-14.058 14.058-14.058 36.85 0 50.908L181.557 256L44.792 392.765c-14.058 14.058-14.058 36.85 0 50.908l23.535 23.535c14.058 14.058 36.85 14.058 50.908 0L256 330.443l136.765 136.765c14.058 14.058 36.85 14.058 50.908 0l23.535-23.535c14.058-14.058 14.058-36.85 0-50.908L330.443 256z" />
+                                        </svg>
+                                        <div class="pl-4">
+                                            Shower
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        @endif
+                        </ul>
                     </div>
 
                     <div class=" p-3">
@@ -199,7 +633,7 @@
                     <form action="#" method="POST">
                         <div class="bg-slate-50 p-6 mb-9 rounded-xl">
                             <h3 class="font-semibold text-2xl text-gray-700 mb-2">
-                                Rp 500.000<span class="text-gray-400">/month</span>
+                                {{"Rp " . number_format($package->prices['monthly_price'],2,',','.');}}<span class="text-gray-400">/month</span>
                             </h3>
 
                             <div class="flex bg-white rounded-xl space-x-0 mb-6 items-center">
@@ -394,7 +828,6 @@
                             <div class="py-4 text-right">
                                 <button type="button"
                                     class="text-white bg-primary hover:bg-sky-600 font-medium rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center">
-                                    Add to cart
                                     <div class="pl-2">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                             fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
@@ -424,7 +857,7 @@
                     <div class="m-2 p-5 border border-slate-300 bg-slate-50 rounded-xl">
                         <!--PROFILE-->
                         <div class="mb-4 flex items-center space-x-4">
-                            <img class="h-7 w-7 rounded-full" src="img/product-owner.png" alt="" />
+                            <img class="h-7 w-7 rounded-full" src="/img/product-owner.png" alt="" />
                             <div class="space-y-1 font-medium text-slate-700">
                                 <p>Hermione Granger</p>
                             </div>
@@ -475,7 +908,7 @@
                     <div class="m-2 p-5 border border-slate-300 bg-slate-50 rounded-xl">
                         <!--PROFILE-->
                         <div class="mb-4 flex items-center space-x-4">
-                            <img class="h-7 w-7 rounded-full" src="img/product-owner.png" alt="" />
+                            <img class="h-7 w-7 rounded-full" src="/img/product-owner.png" alt="" />
                             <div class="space-y-1 font-medium text-slate-700">
                                 {{$item->users->name}}
                             </div>
