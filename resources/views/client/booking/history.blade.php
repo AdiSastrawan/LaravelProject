@@ -13,18 +13,45 @@
                                 My Booking Room
                             </h2>
                         </div>
-                    </div>
-                    @foreach ($rents as $rent)
-                        <div
-                            class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100">
-                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
-                                {{ $rent->resident_name }}
-                            </h5>
-                            <p class="font-normal text-gray-700">Room-{{ $rent->rooms->room_number }}</p>
+
+
+
+                        <div class="">
+                            <div class="container m-auto space-y-8 px-6">
+                                @foreach ($rents as $rent)
+                                <div class="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                                    <div
+                                        class="py-12 sm:p-12 rounded-3xl bg-white border border-gray-100 bg-opacity-80 shadow-2xl shadow-gray-600/10">
+                                        <div class="space-y-16">
+                                            <div class="space-y-2">
+                                                <h3 class="text-2xl font-semibold text-gray-800 transition">
+                                                    Room Number {{ $rent->rooms->room_number }}
+
+                                                </h3>
+                                                <p class="text-gray-600 text-base">
+                                                    Resident name: {{ $rent->resident_name }}
+                                                </p>
+                                                <p class="text-gray-600 text-base">
+                                                    Reservation name: {{ $rent->users->name }}
+                                                </p>
+                                                <p class="text-gray-600 text-base">
+                                                    Start Date: {{ $rent->date_started }}
+                                                </p>
+                                                <p class="text-gray-600 text-base">
+                                                    End Date: {{ $rent->date_ended }}
+                                                </p>
+                                                <p class="text-gray-600 text-base">
+                                                    Total Price: {{ 'Rp ' . number_format($rent['total_price'], 2, ',','.') }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
+                            </div>
                         </div>
-                    @endforeach
+                    </div>
                 </div>
-            </div>
         </section>
     </div>
 </x-page-layout>

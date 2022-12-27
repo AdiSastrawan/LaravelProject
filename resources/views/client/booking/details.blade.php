@@ -649,7 +649,7 @@
                                 </div>
                                 <div class="w-1/2">
                                     <input type="date" id="start_date" name="start_date"
-                                        class="justify-center hover:bg-gray-100 border-none required">
+                                        class="justify-center hover:bg-gray-100 border-none" required>
                                 </div>
                             </div>
 
@@ -660,7 +660,7 @@
                                 </div>
                                 <div class="w-1/2">
                                     <input type="date" id="end_date" name="end_date" readonly
-                                        class="justify-center hover:bg-gray-100 border-none required">
+                                        class="justify-center hover:bg-gray-100 border-none" required>
                                 </div>
                             </div>
 
@@ -840,13 +840,13 @@
 
                             <!--BUTTON SUBMIT-->
                             <div class="py-4 text-right">
-                                <button type="submit"
-                                    class="text-white bg-primary hover:bg-sky-600 font-medium rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center">
+                                <button type="submit" class="text-white bg-primary hover:bg-sky-600 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center">
+                                    Add to cart
                                     <div class="pl-2">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                            fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
-                                            <path
-                                                d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                                                fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
                                         </svg>
                                     </div>
                                 </button>
