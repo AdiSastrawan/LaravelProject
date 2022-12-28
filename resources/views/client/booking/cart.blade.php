@@ -133,7 +133,7 @@
                 </div>
                 <div class="pt-6 text-right">
                     <div
-                        class="text-white bg-primary hover:bg-sky-600 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center">
+                        class="text-white bg-primary hover:bg-sky-600 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center cursor-pointer">
                         <p onclick="confirmCheckout()">Checkout</p>
                         <svg aria-hidden="true" class="ml-2 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg">

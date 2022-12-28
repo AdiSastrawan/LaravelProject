@@ -31,17 +31,18 @@ class BookingController extends Controller
         $packages   = Package::all();
         $rooms      = Room::where('room_booked', 0)->get();
         $prices     = Price::all();
+        $reviews    = Review::all();
 
         //dd($packages);
-        return view('client.booking.packages', compact('packages', 'rooms', 'prices'));
+        return view('client.booking.packages', compact('packages', 'rooms', 'prices', 'reviews'));
     }
 
     public function details($package_id)
     {
         $item = Package::where('package_id', $package_id)->get()->first();
         $rooms = Room::select('room_number', 'room_id')->where('package_id', $package_id)->where('room_booked', 0)->get();
-        $reviews = Review::all();
-
+        $reviews = Review::where('package_id', $package_id)->get();
+        
         //dd($item);
         return view('client.booking.details', ['package' => $item], compact('reviews', 'rooms'));
     }

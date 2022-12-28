@@ -28,11 +28,11 @@ class ReviewController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        $reviews=Review::all();
-        return view('client.booking.details', compact('reviews'));
-    }
+    // public function create()
+    // {
+    //     $reviews=Review::all();
+    //     return view('client.booking.details', compact('reviews'));
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -42,6 +42,7 @@ class ReviewController extends Controller
      */
     public function store(Request $request)
     {
+        
         $validation=$request->validate([
             'rating'        => 'required',
             'description'   => 'required',
@@ -49,7 +50,7 @@ class ReviewController extends Controller
 
         $validation['user_id']=Auth::id();
         Review::create($validation);
-        return redirect('details');
+        return redirect()->back();
     }
 
     /**
@@ -102,7 +103,8 @@ class ReviewController extends Controller
      */
     public function destroy($id)
     {
+        dd($id);
         Review::where('id',$id)->delete();
-        return redirect('details');
+        return redirect()->back();
     }
 }

@@ -11,7 +11,7 @@ class Package extends Model
     public $primaryKey = 'package_id';
     protected $table = "packages";
     protected $fillable = [
-        'package_code', 'package_name', 'permalink', 'package_desc', 'feature_img', 'price_id', 'monthly_price'
+        'package_code', 'package_name', 'permalink', 'package_desc', 'feature_img', 'price_id', 'monthly_price', 'facility_id'
     ];
 
 

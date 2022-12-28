@@ -59,8 +59,4 @@ Route::resource('room', RoomController::class)->middleware('auth', 'isadmin');
 Route::resource('facility', FacilityController::class)->middleware('auth', 'isadmin');
 Route::resource('resident', ResidentController::class)->middleware('auth', 'isadmin');
 
-
-
-
-Route::resource('/details', ReviewController::class);
-Route::resource('/edit-reviews', ReviewController::class);
+Route::resource('edit-reviews', ReviewController::class)->middleware('auth');
