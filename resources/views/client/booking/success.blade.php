@@ -15,7 +15,7 @@
                                 <div class="divide-y divide-gray-300/50 text-center">
                                     <div class="text-base text-gray-600">
                                         <div class="pl-6">
-                                            <img src="/img/success.jpg" class="" width="250" height="250" />
+                                            <img src="/img/Success2.png" class="" width="350" height="250" />
                                         </div>
                                         <p class="font-semibold text-base">
                                             Your payment is successful and the room is successfully booked.
@@ -24,13 +24,11 @@
                                     </div>
                                     <div class="pt-8 text-base font-medium">
                                         <p class="text-gray-900 pb-4">Check in "My Booking" menu to see more details</p>
-                                        <div class="text-right">
+                                        <div class="text-center">
                                             <button
-                                                class="text-right text-white bg-primary hover:bg-sky-600 focus:ring-2 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2focus:outline-none">
+                                                class=" text-white bg-primary hover:bg-sky-600 focus:ring-2 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2focus:outline-none items-center">
                                                 <a href="{{ url('history') }}">My Booking</a>
                                             </button>
-
-
                                         </div>
 
                                     </div>
