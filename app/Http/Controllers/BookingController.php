@@ -42,8 +42,7 @@ class BookingController extends Controller
         $item = Package::where('package_id', $package_id)->get()->first();
         $rooms = Room::select('room_number', 'room_id')->where('package_id', $package_id)->where('room_booked', 0)->get();
         $reviews = Review::where('package_id', $package_id)->get();
-        
-        //dd($item);
+
         return view('client.booking.details', ['package' => $item], compact('reviews', 'rooms'));
     }
 

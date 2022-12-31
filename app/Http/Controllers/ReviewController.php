@@ -17,7 +17,7 @@ class ReviewController extends Controller
     public function index()
     {
         $item = Package::where('package_id', $package_id)->get()->first();
-        $reviews=Review::all();
+        $reviews = Review::all();
         $packages   = Package::all();
 
         return view('client.booking.details', ['package' => $item], compact('reviews'));
@@ -42,13 +42,14 @@ class ReviewController extends Controller
      */
     public function store(Request $request)
     {
-        
-        $validation=$request->validate([
+
+        $validation = $request->validate([
+            'package_id' => '',
             'rating'        => 'required',
             'description'   => 'required',
         ]);
 
-        $validation['user_id']=Auth::id();
+        $validation['user_id'] = Auth::id();
         Review::create($validation);
         return redirect()->back();
     }
@@ -72,7 +73,7 @@ class ReviewController extends Controller
      */
     public function edit($id)
     {
-        $reviews=Review::find($id);
+        $reviews = Review::find($id);
         return view('client.review.edit-reviews', compact('reviews'));
     }
 
@@ -85,14 +86,16 @@ class ReviewController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validation=$request->validate([
+        $validation = $request->validate([
             'rating'        => 'required',
             'description'   => 'required',
         ]);
 
-        $validation['user_id']=Auth::id();
-        Review::where('id',$id)->update($validation);
-        return redirect('details');
+        $validation['user_id'] = Auth::id();
+        $review = Review::where('id', $id);
+        $review->update($validation);
+        $package_id = $review->get()->first();
+        return redirect('details/' . $package_id->package_id);
     }
 
     /**
@@ -103,8 +106,7 @@ class ReviewController extends Controller
      */
     public function destroy($id)
     {
-        dd($id);
-        Review::where('id',$id)->delete();
+        Review::findOrFail($id)->delete();
         return redirect()->back();
     }
 }
