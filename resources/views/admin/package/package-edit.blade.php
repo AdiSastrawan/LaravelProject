@@ -37,7 +37,7 @@
                         name="price" id="price"
                         class="bg-gray-100 border border-gray-200 rounded py-1 px-3 block focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full"
                         placeholder="">
-                        <option value="{{ isset($package) ? $package->prices['monthly_price'] : old('price') }}">
+                        <option value="{{ isset($package) ? $package->price_id : old('price') }}">
                             {{ isset($package) ? $package->prices['monthly_price'] : old('price') }}</option>
                         @foreach ($price as $p)
                             @if ($p->price_id != $package->price_id)
